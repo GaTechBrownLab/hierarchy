@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="487px" height="189px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;">
+    <g transform="matrix(1,0,0,-1,-58.126,203.471)">
+        <rect x="73" y="31.5" width="341.5" height="156.5" style="fill:white;"/>
+    </g>
+    <g transform="matrix(1,0,0,-1,-58.126,359.971)">
+        <path d="M73,188L414.5,188" style="fill:none;fill-rule:nonzero;stroke:rgb(33,33,33);stroke-width:0.5px;"/>
+    </g>
+    <g transform="matrix(1,0,0,-1,-58.126,46.9707)">
+        <path d="M73,31.5L414.5,31.5" style="fill:none;fill-rule:nonzero;stroke:rgb(33,33,33);stroke-width:0.5px;"/>
+    </g>
+    <g transform="matrix(0,-1,1,0,-94.876,166.721)">
+        <path d="M-5.25,109.75L151.25,109.75" style="fill:none;fill-rule:nonzero;stroke:rgb(33,33,33);stroke-width:0.5px;"/>
+    </g>
+    <g transform="matrix(0,-1,1,0,246.624,508.221)">
+        <path d="M336.25,109.75L492.75,109.75" style="fill:none;fill-rule:nonzero;stroke:rgb(33,33,33);stroke-width:0.5px;"/>
+    </g>
+    <g transform="matrix(1,0,0,-1,-58.126,214.439)">
+        <path d="M76.415,42.648L79.83,42.841L83.245,43.047L86.66,43.269L90.075,43.507L93.49,43.764L96.905,44.042L100.32,44.342L103.735,44.666L107.15,45.017L110.565,45.398L113.98,45.812L117.395,46.261L120.81,46.749L124.225,47.279L127.64,47.854L131.055,48.478L134.47,49.154L137.885,49.884L141.3,50.672L144.715,51.518L148.13,52.425L151.545,53.393L154.96,54.421L158.375,55.51L161.79,56.657L165.205,57.86L168.62,59.116L172.035,60.423L175.45,61.778L178.865,63.177L182.28,64.616L185.695,66.094L189.11,67.605L192.525,69.149L195.94,70.72L199.355,72.318L202.77,73.94L206.185,75.583L209.6,77.246L213.015,78.927L216.43,80.623L219.845,82.335L223.26,84.06L226.675,85.797L230.09,87.546L233.505,89.305L236.92,91.073L240.335,92.85L243.75,94.635L247.165,96.427L250.58,98.226L253.995,100.031L257.41,101.842L260.825,103.658L264.24,105.479L267.655,107.305L271.07,109.135L274.485,110.969L277.9,112.806L281.315,114.647L284.73,116.492L288.145,118.339L291.56,120.189L294.975,122.042L298.39,123.897L301.805,125.755L305.22,127.615L308.635,129.477L312.05,131.341L315.465,133.207L318.88,135.074L322.295,136.943L325.71,138.814L332.54,142.56L335.955,144.435L342.785,148.189L346.2,150.068L349.615,151.948L353.03,153.829L356.445,155.711L363.275,159.477L370.105,163.247L380.35,168.908L387.18,172.686L394.01,176.466L397.425,178.357L407.67,184.033L411.085,185.927L414.5,187.82" style="fill:none;fill-rule:nonzero;stroke:rgb(44,49,114);stroke-width:3px;stroke-linecap:butt;"/>
+    </g>
+    <g transform="matrix(1,0,0,-1,-58.126,283.138)">
+        <path d="M76.415,111.168L86.66,111.168L90.075,111.169L93.49,111.171L96.905,111.175L100.32,111.182L103.735,111.193L107.15,111.21L110.565,111.236L113.98,111.273L117.395,111.325L120.81,111.395L124.225,111.488L127.64,111.61L131.055,111.765L134.47,111.961L137.885,112.204L141.3,112.502L144.715,112.862L148.13,113.294L151.545,113.805L154.96,114.405L158.375,115.101L161.79,115.901L165.205,116.813L168.62,117.843L172.035,118.996L175.45,120.273L178.865,121.678L182.28,123.207L185.695,124.86L189.11,126.628L192.525,128.505L195.94,130.48L199.355,132.541L202.77,134.674L206.185,136.864L209.6,139.094L213.015,141.348L216.43,143.611L219.845,145.865L223.26,148.097L226.675,150.293L230.09,152.44L233.505,154.529L236.92,156.551L240.335,158.499L243.75,160.366L247.165,162.151L250.58,163.849L253.995,165.461L257.41,166.986L260.825,168.425L264.24,169.779L267.655,171.052L271.07,172.246L274.485,173.364L277.9,174.41L281.315,175.387L284.73,176.299L288.145,177.149L291.56,177.942L294.975,178.681L298.39,179.369L301.805,180.009L305.22,180.605L308.635,181.16L312.05,181.676L315.465,182.157L318.88,182.605L322.295,183.022L325.71,183.41L329.125,183.772L332.54,184.109L335.955,184.424L339.37,184.717L342.785,184.991L346.2,185.246L349.615,185.485L353.03,185.708L356.445,185.916L359.86,186.111L363.275,186.293L366.69,186.464L370.105,186.624L373.52,186.774L376.935,186.915L380.35,187.047L383.765,187.17L387.18,187.287L390.595,187.396L394.01,187.499L397.425,187.595L400.84,187.686L404.255,187.772L407.67,187.852L411.085,187.928L414.5,188" style="fill:none;fill-rule:nonzero;stroke:rgb(52,133,141);stroke-width:3px;stroke-linecap:butt;"/>
+    </g>
+    <g transform="matrix(1,0,0,-1,-58.126,312.126)">
+        <path d="M76.415,140.155L86.66,140.155L90.075,140.156L93.49,140.158L96.905,140.162L100.32,140.169L103.735,140.18L107.15,140.197L110.565,140.223L113.98,140.26L117.395,140.312L120.81,140.382L124.225,140.476L127.64,140.597L131.055,140.752L134.47,140.947L137.885,141.19L141.3,141.487L144.715,141.846L148.13,142.276L151.545,142.785L154.96,143.381L158.375,144.072L161.79,144.865L165.205,145.767L168.62,146.782L172.035,147.916L175.45,149.168L178.865,150.539L182.28,152.027L185.695,153.625L189.11,155.325L192.525,157.117L195.94,158.988L199.355,160.922L202.77,162.902L206.185,164.91L209.6,166.926L213.015,168.931L216.43,170.904L219.845,172.828L223.26,174.684L226.675,176.457L230.09,178.132L233.505,179.695L236.92,181.138L240.335,182.451L243.75,183.629L247.165,184.666L250.58,185.562L253.995,186.314L257.41,186.924L260.825,187.393L264.24,187.726L267.655,187.927L271.07,188L274.485,187.952L277.9,187.789L281.315,187.517L284.73,187.145L288.145,186.68L291.56,186.128L294.975,185.498L298.39,184.797L301.805,184.032L305.22,183.212L308.635,182.342L312.05,181.43L315.465,180.483L318.88,179.506L322.295,178.506L325.71,177.488L329.125,176.457L332.54,175.419L339.37,173.335L342.785,172.298L346.2,171.269L349.615,170.251L353.03,169.246L356.445,168.257L359.86,167.285L363.275,166.333L366.69,165.402L370.105,164.493L373.52,163.607L376.935,162.745L380.35,161.907L383.765,161.094L387.18,160.306L390.595,159.543L394.01,158.806L397.425,158.093L400.84,157.404L404.255,156.741L407.67,156.101L411.085,155.484L414.5,154.891" style="fill:none;fill-rule:nonzero;stroke:rgb(165,205,144);stroke-width:3px;stroke-linecap:butt;"/>
+    </g>
+    <g transform="matrix(0,-1,1,0,368.124,524.221)">
+        <rect x="457.75" y="-3.75" width="51" height="121.5" style="fill:white;"/>
+    </g>
+    <g>
+        <g transform="matrix(1,0,0,1,92.524,9.471)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:13px;fill:rgb(33,33,33);">Ef<tspan x="12.048px " y="0px ">f</tspan></text>
+        </g>
+        <g transform="matrix(1,0,0,1,108.404,9.471)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:13px;fill:rgb(33,33,33);">ect of Repressive QS</text>
+        </g>
+        <g transform="matrix(1,0,0,1,234.74,9.471)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:13px;fill:rgb(33,33,33);">System</text>
+        </g>
+    </g>
+    <g transform="matrix(1,0,0,1,132.624,185.971)">
+        <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:11px;fill:rgb(33,33,33);">Population Density →</text>
+    </g>
+    <g transform="matrix(-4.375e-08,-1,1,-4.375e-08,7.87401,142.721)">
+        <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:11px;fill:rgb(33,33,33);">Expression Level →</text>
+    </g>
+    <g>
+        <g transform="matrix(1,0,0,1,401.374,40.721)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:9px;">Single System</text>
+        </g>
+        <g transform="matrix(1,0,0,1,401.374,51.721)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:9px;">w/ Limiting System</text>
+        </g>
+        <g transform="matrix(1,0,0,1,401.374,62.721)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:9px;">w/ Damping System</text>
+        </g>
+    </g>
+    <g>
+        <g transform="matrix(1,0,0,1,393.124,26.221)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:9px;">QS</text>
+        </g>
+        <g transform="matrix(1,0,0,1,408.121,26.221)">
+            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:9px;">Architecture</text>
+        </g>
+    </g>
+    <g transform="matrix(1,0,0,-1,-58.126,90.4707)">
+        <path d="M426.5,53.25L456.5,53.25" style="fill:none;fill-rule:nonzero;stroke:rgb(44,49,114);stroke-width:3px;stroke-linecap:butt;"/>
+    </g>
+    <g transform="matrix(1,0,0,-1,-58.126,112.471)">
+        <path d="M426.5,64.25L456.5,64.25" style="fill:none;fill-rule:nonzero;stroke:rgb(52,133,141);stroke-width:3px;stroke-linecap:butt;"/>
+    </g>
+    <g transform="matrix(1,0,0,-1,-58.126,134.471)">
+        <path d="M426.5,75.25L456.5,75.25" style="fill:none;fill-rule:nonzero;stroke:rgb(165,205,144);stroke-width:3px;stroke-linecap:butt;"/>
+    </g>
+    <g transform="matrix(0,-1,1,0,368.124,524.221)">
+        <rect x="457.75" y="-3.75" width="51" height="121.5" style="fill:none;stroke:rgb(33,33,33);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;"/>
+    </g>
+    <g transform="matrix(1,0,0,-1,-58.126,75.9707)">
+        <path d="M422.5,46L544,46" style="fill:none;fill-rule:nonzero;stroke:rgb(33,33,33);stroke-width:0.5px;stroke-linecap:butt;"/>
+    </g>
+</svg>
