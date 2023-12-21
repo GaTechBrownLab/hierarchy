@@ -14,7 +14,7 @@
 # - unicode glyphs to markdown subscripts
 # - GitHub-friendly subscripts/superscripts to real markdown
 
-cat README.md | sed \
+cat paper.md | sed \
     -e 's/ lasB/ _lasB_/g' \
     -e 's/ lasI/ _lasI_/g' \
     -e 's/ lasR/ _lasR_/g' \
@@ -30,6 +30,6 @@ cat README.md | sed \
     --from markdown \
     --filter pandoc-crossref \
     --citeproc \
-    --bibliography "Papers/Bibliography (BibTeX).bib" \
+    --bibliography "Bibliography (BibTeX).bib" \
     --reference-doc=reference.docx \
     --output "paper.docx"
