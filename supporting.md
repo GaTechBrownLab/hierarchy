@@ -62,4 +62,30 @@ Table: rhlr {#tbl:rhlr}
 <div custom-style="Caption"><p>
 **Table S.[-@tbl:rhlr].** Activation of QS genes by RhlR/C<sub>4</sub>‑HSL in review of published literature. Same notation as previous table.
 </p></div>
+### Data Analysis
+
+Gene expression data for *lasI,* *rhlI,* and *lasB* was collected every hour for a 24-hour period. Observations used for analysis were limited to a two-hour window that contained the peak expression level for each gene. Figures S.[-@fig:lasi_time], S.[-@fig:rhli_time], and S.[-@fig:lasb_time] show the full time course of expression levels and highlight the intervals used for analysis. Those windows were 8–10 hours, 3–5 hours, and 4–6 hours for *lasI,* *rhlI,* and *lasB,* respectively.
+
+![lasi_time](Figures/lasi_time.svg){#fig:lasi_time}
+
+<div custom-style="Caption"><p>
+**Figure S.[-@fig:lasi_time]. Expression level of _lasI_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis.
+</p></div>
+
+![rhli_time](Figures/rhli_time.svg){#fig:rhli_time}
+
+<div custom-style="Caption"><p>
+**Figure S.[-@fig:rhli_time]. Expression level of _rhlI_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis.
+</p></div>
+
+![lasb_time](Figures/lasb_time.svg){#fig:lasb_time}
+
+<div custom-style="Caption"><p>
+**Figure S.[-@fig:lasb_time]. Expression level of _lasB_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis.
+</p></div>
+
+
 ## References
+
+
+
