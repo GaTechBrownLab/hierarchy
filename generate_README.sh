@@ -37,7 +37,7 @@ cat paper.md | sed \
 | sed -E "s/\<\/{0,1}span.*\>//" \
 | sed -E "s/\<\/{0,1}div.*\>//" \
 | sed -E "s/^Table [0-9]?:.*//" \
-| sed -E "s/\\\$\\\$/\n\$\$\n/" \
+| sed -E "s/\\\$\\\$/\n\$\$/" \
 | sed -E "s/^\<div.*//" \
 | sed -E "s/^entry-spacing=\"0\"\>//" \
 | sed -E "s/^([0-9]*)\. /\1\\\. /" \

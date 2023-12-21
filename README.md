@@ -55,7 +55,6 @@ To quantify the impact of each signal alone, we model gene expression using Mich
 For a single signal, gene expression is defined by equation 1, where *ɑ<sub>0</sub>* is basal expression, *ɑ* is the maximum increase in expression from auto-induction, \[*S* \] is the signal concentration, and *K* is the disassociation constant of the binding event or, equivalently, the signal concentration corresponding to half of the maximum expression gain. With this model we quantify two qualities: how strongly a signal can increase gene expression above its basal level (*ɑ*), and how sensitive gene expression is to the presence of the signal (*K*).
 
 $$
-
 E(S) = \alpha_0 + 
 \alpha \frac{[S]}{[S] + K}
 \qquad{(1)}
@@ -93,7 +92,6 @@ Having established a simple model for each signal in isolation, we next consider
 To account for the synergy between the signals, we incorporate a cooperativity term in the gene expression model. Note that the cooperativity term is a multiplication of signals, and it alone cannot explain the full response, as the product is necessarily zero when any signal is absent. This term accounts for any non-additive interaction, for example the ability of one bound transcription factor to recruit the binding of a second transcription factor (Kaplan et al. 2008). Equation 2 shows the result. Each gene has a basal expression level, amplification from each signal alone, and additional amplification from each pair-wise combination of signals. The interaction from these pair-wise combinations captures the cooperative enhancement from the combined signals.
 
 $$
-
 E_i(\mathbf{S}) \ \ = \ \ \alpha_{i,0} \ \ \ + \ \ \ 
 \sum_{j=1}^{\mathrm{N_S}}\alpha_{i,j}\frac{[S_j]}{[S_j] + K_{i,j}} \ \ \ + \ \ \
 \sum_{j=1}^{\mathrm{N_S}-1}\sum_{j' = j+1}^{\mathrm{N_S}}
@@ -138,7 +136,6 @@ Having established that both signals influence the expression levels of both syn
 We begin by focusing on the canonical QS environmental variables: bacterial population density and mass transfer (e.g. diffusion or advective flow). We first characterize the QS response as the extracellular signal concentration. Building on previous models of extracellular signal dynamics (James et al. 2000; Dockery and Keener 2001; Ward et al. 2001; Brown 2013; Cornforth et al. 2014) we assume that signal concentration increases in proportion to the corresponding synthase’s expression level, multiplied by the number of cells expressing synthase, and decreases due to a constant rate of decay and removal via mass transfer. These assumptions lead to the differential equation model of equation 3, where *S<sub>i</sub>* is the concentration of signal *i*, *E<sub>i</sub>* (**S**) is the expression level of the synthase for signal *i* (as a function of both signal concentrations, **S**, see equation 2) and *c* a proportionality constant, *N* is the population density, and *𝛿<sub>i</sub>* is the decay rate of signal *i* and *m* is the rate of mass transfer.
 
 $$
-
 \frac{\mathrm{d}S_i}{\mathrm{dt}} \ \ = \ \ 
 c E_i(\mathbf{S})\cdot N \ \ - \ \ 
  \delta_i \cdot S_i \ \ - \ \ 
