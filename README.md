@@ -115,7 +115,7 @@ For both *lasI* and *rhlI* we again minimize the sum of squared errors to estima
 |                          | K<sub>Q</sub> for C<sub>4</sub>-HSL        | 0.003 μM (0 – 0.011)  | \< 0.001 μM              |
 |                          | K<sub>Q</sub> for 3‑oxo‑C<sub>12</sub>‑HSL | \< 0.001 μM           | \< 0.001 μM              |
 
-Table 2. **Multi-signal parameter estimates.** Model parameters for gene expression as a function of multiple signal concentrations. Parameters are the same as in Table 1 with addition of cooperative fold-change, again derived from raw parameters as (*ɑ<sub>Q</sub>* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> ,and cooperative half-concentration *K<sub>Q</sub>.* Values shown with 95% confidence intervals.
+**Table 2. Multi-signal parameter estimates.** Model parameters for gene expression as a function of multiple signal concentrations. Parameters are the same as in Table 1 with addition of cooperative fold-change, again derived from raw parameters as (*ɑ<sub>Q</sub>* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> ,and cooperative half-concentration *K<sub>Q</sub>.* Values shown with 95% confidence intervals.
 
 Figure 7 compares the model estimates with observations. For both genes, the model captures the effect of either signal in isolation and both signals in combination.
 

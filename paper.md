@@ -123,7 +123,7 @@ For both *lasI* and *rhlI* we again minimize the sum of squared errors to estima
 Table: multisignal {#tbl:multisignal}
 
 <div custom-style="Caption"><p>
-Table [-@tbl:multisignal]. **Multi-signal parameter estimates.** Model parameters for gene expression as a function of multiple signal concentrations. Parameters are the same as in Table [-@tbl:singlesignal] with addition of cooperative fold-change, again derived from raw parameters as (*ɑ<sub>Q</sub>* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> ,and cooperative half-concentration *K<sub>Q</sub>.* Values shown with 95% confidence intervals.
+**Table [-@tbl:multisignal]. Multi-signal parameter estimates.** Model parameters for gene expression as a function of multiple signal concentrations. Parameters are the same as in Table [-@tbl:singlesignal] with addition of cooperative fold-change, again derived from raw parameters as (*ɑ<sub>Q</sub>* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> ,and cooperative half-concentration *K<sub>Q</sub>.* Values shown with 95% confidence intervals.
 </p></div>
 Figure [-@fig:multiple] compares the model estimates with observations. For both genes, the model captures the effect of either signal in isolation and both signals in combination.
 
