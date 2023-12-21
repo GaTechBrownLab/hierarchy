@@ -62,6 +62,7 @@ Table: rhlr {#tbl:rhlr}
 <div custom-style="Caption"><p>
 **Table S.[-@tbl:rhlr].** Activation of QS genes by RhlR/C<sub>4</sub>‑HSL in review of published literature. Same notation as previous table.
 </p></div>
+
 ### Data Analysis
 
 Gene expression data for *lasI,* *rhlI,* and *lasB* was collected every hour for a 24-hour period. Observations used for analysis were limited to a two-hour window that contained the peak expression level for each gene. Figures S.[-@fig:lasi_time], S.[-@fig:rhli_time], and S.[-@fig:lasb_time] show the full time course of expression levels and highlight the intervals used for analysis. Those windows were 8–10 hours, 3–5 hours, and 4–6 hours for *lasI,* *rhlI,* and *lasB,* respectively.
@@ -82,6 +83,28 @@ Gene expression data for *lasI,* *rhlI,* and *lasB* was collected every hour for
 
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:lasb_time]. Expression level of _lasB_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis.
+</p></div>
+
+### Multi-Signal Models
+
+Figure 7 in the main text summarizes the predictions of the multi-signal models for *lasI* and *rhlI* expression. The following figures provide a more detailed comparison of the model predictions for all three genes.
+
+![model_lasi](Figures/model_lasi.svg){#fig:model_lasi}
+
+<div custom-style="Caption"><p>
+**Figure S.[-@fig:model_lasi]. Multi-signal model for _lasI_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values.
+</p></div>
+
+![model_rhli](Figures/model_rhli.svg){#fig:model_rhli}
+
+<div custom-style="Caption"><p>
+**Figure S.[-@fig:model_rhli]. Multi-signal model for _rhlI_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values.
+</p></div>
+
+![model_lasb](Figures/model_lasb.svg){#fig:model_lasb}
+
+<div custom-style="Caption"><p>
+**Figure S.[-@fig:model_lasb]. Multi-signal model for _lasB_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values.
 </p></div>
 
 
