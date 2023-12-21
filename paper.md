@@ -63,6 +63,8 @@ E(S) = \alpha_0 +
 \alpha \frac{[S]}{[S] + K}
 $$ {#eq:singlesignal}
 
+<img src="Figures/eq_singlesignal.svg" width="100%"/>
+
 By minimizing the sum of squared error (with non-linear regression using the Gauss-Newton algorithm), we estimate model parameters from our data, using only those observations in which a single signal is present. Table [-@tbl:singlesignal] presents the results as maximum fold-change ((*ɑ* + *ɑ<sub>0</sub>*) / *ɑ<sub>0</sub>*) and half-concentration values (_K_) for both signals. Our model fits illustrate that while the *las* and *rhl* systems have reciprocal impacts, those impacts are not symmetrical. The *las* signal 3‑oxo‑C<sub>12</sub>‑HSL has a substantially greater influence on gene expression than C<sub>4</sub>‑HSL. In both cases the potential fold-change from 3‑oxo‑C<sub>12</sub>‑HSL is approximately six times greater than the potential fold-change from C<sub>4</sub>‑HSL. Both *lasI* and *rhlI* are also more sensitive to 3‑oxo‑C<sub>12</sub>‑HSL than to the C<sub>4</sub>‑HSL as the concentrations required to reach half of maximal expression are roughly 4 times and 30 times higher for the latter.
 
 | Signal | Parameter | _lasI_ Estimate | _rhlI_ Estimate |
@@ -103,6 +105,8 @@ E_i(\mathbf{S}) \ \ = \ \ \alpha_{i,0} \ \ \ + \ \ \
 \sum_{j=1}^{\mathrm{N_S}-1}\sum_{j' = j+1}^{\mathrm{N_S}}
 \alpha_{i,j,j'}\frac{[S_j][S_{j'}]}{([S_j] + K_{Qi,j,j'})([S_{j'}] + K_{Qi,j',j})}
 $$ {#eq:multisignal}
+
+<img src="Figures/eq_multisignal.svg" width="100%"/>
 
 For both *lasI* and *rhlI* we again minimize the sum of squared errors to estimate parameter values. The resulting multi-signal models in Table [-@tbl:multisignal] have R^2^ values of 0.82 and 0.77.
 
@@ -149,6 +153,8 @@ c E_i(\mathbf{S})\cdot N \ \ - \ \
  \delta_i \cdot S_i \ \ - \ \ 
  m \cdot S_i
 $$ {#eq:dynamics}
+
+<img src="Figures/eq_dynamics.svg" width="100%"/>
 
 To find solutions for the steady state signal concentrations _S<sub>i</sub>_<sup>﹡</sup> in this model, we estimate expression levels _E<sub>i</sub>_ (**S**) from our experimental data (Equation [-@eq:multisignal], Table [-@tbl:multisignal]). The synthase expression data alone does not define the per-capita rate of signal production, so we estimate the proportionality constant _c_ using existing data collected with PAO1 wildtype under the same experimental density conditions ([@Rattray2022]; details in supporting information). Finally, we use published measurements of relative signal decay rates to parameterize *𝜹<sub>i</sub>.* Specifically, Cornforth et al. [-@Cornforth2014] show the decay rate of 3‑oxo‑C<sub>12</sub>‑HSL (_i_ = 1) to be 1.7 times greater than C<sub>4</sub>‑HSL (_i_ = 2) across a range of environmental conditions. The resulting solutions define the steady state concentrations of both signals given our data on signal-mediated expression (Figure [-@fig:combined]) and defined environmental condistions (density *N* and mass transfer *m*).
 

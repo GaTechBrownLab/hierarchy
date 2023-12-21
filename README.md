@@ -61,6 +61,8 @@ E(S) = \alpha_0 +
 \qquad{(1)}
 $$
 
+<img src="Figures/eq_singlesignal.svg" width="100%"/>
+
 By minimizing the sum of squared error (with non-linear regression using the Gauss-Newton algorithm), we estimate model parameters from our data, using only those observations in which a single signal is present. Table 1 presents the results as maximum fold-change ((*ɑ* + *ɑ<sub>0</sub>*) / *ɑ<sub>0</sub>*) and half-concentration values (*K*) for both signals. Our model fits illustrate that while the *las* and *rhl* systems have reciprocal impacts, those impacts are not symmetrical. The *las* signal 3‑oxo‑C<sub>12</sub>‑HSL has a substantially greater influence on gene expression than C<sub>4</sub>‑HSL. In both cases the potential fold-change from 3‑oxo‑C<sub>12</sub>‑HSL is approximately six times greater than the potential fold-change from C<sub>4</sub>‑HSL. Both *lasI* and *rhlI* are also more sensitive to 3‑oxo‑C<sub>12</sub>‑HSL than to the C<sub>4</sub>‑HSL as the concentrations required to reach half of maximal expression are roughly 4 times and 30 times higher for the latter.
 
 | Signal                   | Parameter       | *lasI* Estimate       | *rhlI* Estimate          |
@@ -99,6 +101,8 @@ E_i(\mathbf{S}) \ \ = \ \ \alpha_{i,0} \ \ \ + \ \ \
 \qquad{(2)}
 $$
 
+<img src="Figures/eq_multisignal.svg" width="100%"/>
+
 For both *lasI* and *rhlI* we again minimize the sum of squared errors to estimate parameter values. The resulting multi-signal models in Table 2 have R<sup>2</sup> values of 0.82 and 0.77.
 
 | Signal                   | Parameter                                  | *lasI* Estimate       | *rhlI* Estimate          |
@@ -111,7 +115,7 @@ For both *lasI* and *rhlI* we again minimize the sum of squared errors to estima
 |                          | K<sub>Q</sub> for C<sub>4</sub>-HSL        | 0.003 μM (0 – 0.011)  | \< 0.001 μM              |
 |                          | K<sub>Q</sub> for 3‑oxo‑C<sub>12</sub>‑HSL | \< 0.001 μM           | \< 0.001 μM              |
 
-**Table 2. Multi-signal parameter estimates.** Model parameters for gene expression as a function of multiple signal concentrations. Parameters are the same as in Table 1 with addition of cooperative fold-change, again derived from raw parameters as (*ɑ<sub>Q</sub>* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> ,and cooperative half-concentration *K<sub>Q</sub>.* Values shown with 95% confidence intervals.
+Table 2. **Multi-signal parameter estimates.** Model parameters for gene expression as a function of multiple signal concentrations. Parameters are the same as in Table 1 with addition of cooperative fold-change, again derived from raw parameters as (*ɑ<sub>Q</sub>* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> ,and cooperative half-concentration *K<sub>Q</sub>.* Values shown with 95% confidence intervals.
 
 Figure 7 compares the model estimates with observations. For both genes, the model captures the effect of either signal in isolation and both signals in combination.
 
@@ -141,6 +145,8 @@ c E_i(\mathbf{S})\cdot N \ \ - \ \
  m \cdot S_i
 \qquad{(3)}
 $$
+
+<img src="Figures/eq_dynamics.svg" width="100%"/>
 
 To find solutions for the steady state signal concentrations *S<sub>i</sub>*<sup>﹡</sup> in this model, we estimate expression levels *E<sub>i</sub>* (**S**) from our experimental data (Equation 2, Table 2). The synthase expression data alone does not define the per-capita rate of signal production, so we estimate the proportionality constant *c* using existing data collected with PAO1 wildtype under the same experimental density conditions ((Rattray et al. 2022); details in supporting information). Finally, we use published measurements of relative signal decay rates to parameterize *𝜹<sub>i</sub>.* Specifically, Cornforth et al. (2014) show the decay rate of 3‑oxo‑C<sub>12</sub>‑HSL (*i* = 1) to be 1.7 times greater than C<sub>4</sub>‑HSL (*i* = 2) across a range of environmental conditions. The resulting solutions define the steady state concentrations of both signals given our data on signal-mediated expression (Figure 5) and defined environmental condistions (density *N* and mass transfer *m*).
 
