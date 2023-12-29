@@ -2,7 +2,7 @@
 
 ## Supporting Information
 
-### Structured Literature Search
+### Literature Search
 
 The PubMed database of the US National Institutes of Health was queried on 20 July 2021 using the query [`PubMed Search ("review"[Title/Abstract] OR "review"[Publication Type]) AND "quorum sensing"[Title] AND "pseudomonas aeruginosa"[Title/Abstract]`](https://pubmed.ncbi.nlm.nih.gov/?term=%28%22review%22%5BTitle%2FAbstract%5D+OR+%22review%22%5BPublication+Type%5D%29+AND+%22quorum+sensing%22%5BTitle%5D+AND+%22pseudomonas+aeruginosa%22%5BTitle%2FAbstract%5D&sort=), resulting in 76 results with publication dates from 1996 to 2021. Papers that incluced a daigram of the gene transcription networks for the *las* and *rhl* quorum sensing systems were further analyzed to show the interactions present on those diagrams. Tables S.[-@tbl:lasr] and S.[-@tbl:rhlr] show the results. Of the papers analyzed, all show the *las* system positively activating the *rhl* system, and none show the *rhl* system postively activating the *las* system.
 
@@ -105,6 +105,32 @@ Figure 7 in the main text summarizes the predictions of the multi-signal models 
 
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:model_lasb]. Multi-signal model for _lasB_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values.
+</p></div>
+### Signal Dynamics
+
+We analyze signal dynamics using the model from the main text where the per-capita single production rater is assumed to be proportional to the synthase expression level, $E_i(\mathbf{S})$. The proportionality constant is $c_i$.
+$$
+\frac{\mathrm{d}S_i}{\mathrm{dt}} \ \ = \ \ c_i E_i(\mathbf{S})\cdot N \ \ - \ \  \delta_i \cdot S_i \ \ - \ \  m \cdot S_i
+$$
+We consider the equilibrium signal concentration (where $\mathrm{d}S/\mathrm{dt} = 0$) and normalize to the decay rate of  C<sub>4</sub>‑HSL ($\delta_2$). When there is no mass transfer ($m = 0$), these simplifications result in an equation for  C<sub>4</sub>‑HSL,
+$$
+0 \ \ = \ \ \frac{ c_2 }{ \delta_2 } E_2(\mathbf{S})\cdot N \ \ - \ \ S_2
+$$
+which can be solved for $c_2 / \delta_2$ in terms of *rhlI* expression $E_2(\mathbf{S})$, density $N$, and C<sub>4</sub>‑HSL concentration $S_2$. The corresponding equation for 3‑oxo‑C<sub>12</sub>‑HSL includes an additional factor $\delta_1/\delta_2$ which, from [@Cornforth2014], we take to be approximately 1.7.
+$$
+0 \ \ = \ \ \frac{ c_1 }{ \delta_2 } E_1(\mathbf{S})\cdot N \ \ - \ \ \frac{ \delta_1 }{ \delta_2 } S_1
+$$
+Data from [@Rattray2022] includes measurements of equilibrium signal concentrations at multiple population densities. We combine those measurements of $N$ and $S_i$ with our model’s estimate of synthase expression level $E_i(\mathbf{S})$ and use non-linear least squares to estimate the proportionality constants.
+
+| Signal _i_                   | Proportionality Constant $c_i/\delta_2$ | Adjusted R<sup>2</sup> |
+| :--------------------------- | --------------------------------------: | ---------------------: |
+| **3‑oxo‑C<sub>12</sub>‑HSL** |                        0.0000256 μM/RLU |                 0.8637 |
+| **C<sub>4</sub>‑HSL**        |                        0.0000433 μM/RLU |                 0.8639 |
+
+Table: const {#tbl:const}
+
+<div custom-style="Caption"><p>
+**Table S.[-@tbl:const].** Estimated proportionality constants that relate synthase expression levels to per-capita signal production rates. Final column shows adjusted R<sup>2</sup> of non-linear least squares estimate.
 </p></div>
 
 
