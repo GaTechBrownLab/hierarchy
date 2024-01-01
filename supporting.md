@@ -122,15 +122,48 @@ $$
 $$
 Data from [@Rattray2022] includes measurements of equilibrium signal concentrations at multiple population densities. We combine those measurements of $N$ and $S_i$ with our model’s estimate of synthase expression level $E_i(\mathbf{S})$ and use non-linear least squares to estimate the proportionality constants.
 
-| Signal _i_                   | Proportionality Constant $c_i/\delta_2$ | Adjusted R<sup>2</sup> |
-| :--------------------------- | --------------------------------------: | ---------------------: |
-| **3‑oxo‑C<sub>12</sub>‑HSL** |                        0.0000256 μM/RLU |                 0.8637 |
-| **C<sub>4</sub>‑HSL**        |                        0.0000433 μM/RLU |                 0.8639 |
+| Signal _i_                   | Proportionality Constant $c_i/\delta_2$ |
+| :--------------------------- | --------------------------------------: |
+| **3‑oxo‑C<sub>12</sub>‑HSL** |                              1.3 nM/RLU |
+| **C<sub>4</sub>‑HSL**        |                              2.5 nM/RLU |
 
 Table: const {#tbl:const}
 
 <div custom-style="Caption"><p>
 **Table S.[-@tbl:const].** Estimated proportionality constants that relate synthase expression levels to per-capita signal production rates. Final column shows adjusted R<sup>2</sup> of non-linear least squares estimate.
+</p></div>
+
+![constants](Figures/constants.svg){#fig:constants}
+
+<div custom-style="Caption"><p>
+**Figure S.[-@fig:constants]. Equilibrium signal concentration predicted using proportionality constants.** Individual data points show experimental observations and dashed lines indicate model predictions.
+</p></div>
+### Normalizing Alternate QS Architectures
+
+The main text analyzes hypothetical, alternative architectures by eliminating the influence of specific signals on specific genes. For example, the hierarchical architecture nullifies the influence of C<sub>4</sub>‑HSL on *lasI* without modifying the effect of 3‑oxo‑C<sub>12</sub>‑HSL on *lasI.* This change necessarily reduces the maximum expression level of *lasI,* and that reduction partially explains the different *lasB* response in a hierarchical architecture. Reducing maximum *lasI* expression alone, however, does not explain all of the differences in the *lasB* response. To expose those additional differences, we make additional adjustments to the model. In particular, we increase the expression of *lasI* due to 3‑oxo‑C<sub>12</sub>‑HSL to precisely compensate for the loss of expression due to C<sub>4</sub>‑HSL. Table S.[-@tbl:architectures] shows the full set of adjustments required to normalize the maximum synthase expression levels across all architectures.
+
+
+| Gene | Signal | Parameter | Derivation | Reciprocal Architecture | Hierarchical  Architecture | Independent Architecture |
+|-|-|--------|:------:|:------:|:------:|:------:|
+| *lasI* | 3‑oxo‑C<sub>12</sub>‑HSL | Max fold-change | (*ɑ*<sub>1,1</sub> + *ɑ*<sub>1,0</sub>) / *ɑ*<sub>1,0</sub> | 38 × | 73 × | 73 × |
+|  | C<sub>4</sub>‑HSL | Max fold-change | (*ɑ*<sub>1,2</sub> + *ɑ*<sub>1,0</sub>) / *ɑ*<sub>1,0</sub> | 6.4 × |            1 ×             | 1 × |
+|  | Combined | Max fold-change | (*ɑ*<sub>1,1,2</sub> + *ɑ*<sub>1,0</sub>) / *ɑ*<sub>1,0</sub> | 30 × | 1 × | 1 × |
+| *rhlI* | 3‑oxo‑C<sub>12</sub>‑HSL | Max fold-change | (*ɑ*<sub>2,1</sub> + *ɑ*<sub>2,0</sub>) / *ɑ*<sub>2,0</sub> | 35 × | 35 × | 1 × |
+| | C<sub>4</sub>‑HSL | Max fold-change | (*ɑ*<sub>2,2</sub> + *ɑ*<sub>2,0</sub>) / *ɑ*<sub>2,0</sub> | 6.4 × | 6.4 × | 66 × |
+| | Combined | Max fold-change | (*ɑ*<sub>2,1,2</sub> + *ɑ*<sub>1,0</sub>) / *ɑ*<sub>1,0</sub> | 27 × | 27 × | 1 × |
+
+Table: architectures {#tbl:architectures}
+
+<div custom-style="Caption"><p>
+**Table S.[-@tbl:architectures]. Models of hierarchical and independent architectures can be normalized to ensure that maximum synthase expression is the same for all architectures.** Parameters are the same as those in the main text but with increased values where appropriate.
+</p></div>
+
+The result of these adjustments, shown in Figure [-@fig:lasb_responses2] shows the same qualitative differences as the unnormalized models in the main text. The reciprocal architecture remains the most sensitive to changes in population density and the most robust to signal loss from mass transfer.
+
+![lasb_responses2](Figures/lasb_responses2.svg){#fig:lasb_responses2}
+
+<div custom-style="Caption"><p>
+**Figure [-@fig:lasb_responses2]. The reciprocal QS architecture is more sensitive to population density and more robust to environmental interference.** Plots are the same as those in the corresponding figure in the main text, but show the normalized models.
 </p></div>
 
 
