@@ -109,17 +109,23 @@ Figure 7 in the main text summarizes the predictions of the multi-signal models 
 ### Signal Dynamics
 
 We analyze signal dynamics using the model from the main text where the per-capita single production rater is assumed to be proportional to the synthase expression level, $E_i(\mathbf{S})$. The proportionality constant is $c_i$.
+
 $$
 \frac{\mathrm{d}S_i}{\mathrm{dt}} \ \ = \ \ c_i E_i(\mathbf{S})\cdot N \ \ - \ \  \delta_i \cdot S_i \ \ - \ \  m \cdot S_i
 $$
+
 We consider the equilibrium signal concentration (where $\mathrm{d}S/\mathrm{dt} = 0$) and normalize to the decay rate of  C<sub>4</sub>‑HSL ($\delta_2$). When there is no mass transfer ($m = 0$), these simplifications result in an equation for  C<sub>4</sub>‑HSL,
+
 $$
 0 \ \ = \ \ \frac{ c_2 }{ \delta_2 } E_2(\mathbf{S})\cdot N \ \ - \ \ S_2
 $$
+
 which can be solved for $c_2 / \delta_2$ in terms of *rhlI* expression $E_2(\mathbf{S})$, density $N$, and C<sub>4</sub>‑HSL concentration $S_2$. The corresponding equation for 3‑oxo‑C<sub>12</sub>‑HSL includes an additional factor $\delta_1/\delta_2$ which, from [@Cornforth2014], we take to be approximately 1.7.
+
 $$
 0 \ \ = \ \ \frac{ c_1 }{ \delta_2 } E_1(\mathbf{S})\cdot N \ \ - \ \ \frac{ \delta_1 }{ \delta_2 } S_1
 $$
+
 Data from [@Rattray2022] includes measurements of equilibrium signal concentrations at multiple population densities. We combine those measurements of $N$ and $S_i$ with our model’s estimate of synthase expression level $E_i(\mathbf{S})$ and use non-linear least squares to estimate the proportionality constants.
 
 | Signal _i_                   | Proportionality Constant $c_i/\delta_2$ |
