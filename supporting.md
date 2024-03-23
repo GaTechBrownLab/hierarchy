@@ -169,7 +169,7 @@ The result of these adjustments, shown in Figure [-@fig:lasb_responses2] shows t
 ![lasb_responses2](Figures/lasb_responses2.svg){#fig:lasb_responses2}
 
 <div custom-style="Caption"><p>
-**Figure [-@fig:lasb_responses2]. The reciprocal QS architecture is more sensitive to population density and more robust to environmental interference.** Plots are the same as those in the corresponding figure in the main text, but show the normalized models.
+**Figure S.[-@fig:lasb_responses2]. The reciprocal QS architecture is more sensitive to population density and more robust to environmental interference.** Plots are the same as those in the corresponding figure in the main text, but show the normalized models.
 </p></div>
 
 
