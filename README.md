@@ -144,23 +144,9 @@ The parameter estimates in Table 2 quantify the relative effect of individual an
 
 **Figure 8. The *las* and *rhl* quorum sensing systems have a reciprocal, but unequal relationship.** Red arrows represent maximum fold-change induction from *las*’s 3‑oxo‑C<sub>12</sub>‑HSL and yellow arrows maximum fold-change induction from *rhl’*s C<sub>4</sub>‑HSL. The orange component is additional induction from the combination of both signals. Arrow thickness is proportional to fold-change. Inset shows relative contribution of each signal to total maximum fold-change for expression levels of *lasI* and *rhlI,* and half concentration values for each.
 
-### Synergestic Quorum Sensing Systems Shape the Response to Environmental Variation
+### Synergies Determines Quorum Sensing Response
 
-Having established that both signals influence the expression levels of both synthase genes, we next consider how multiple quorum sensing systems affect the overall quorum sensing response to environmental variation. The methodology we apply to *lasI* and *rhlI* can also quantify the expression level response of other genes. Here we look at *lasB,* a classic QS effector gene that codes for the secreted elastase protein LasB and is widely used as a model of QS-mediated virulence (Casilag et al. 2016; Cigana et al. 2021) and cooperation (Diggle et al. 2007; Allen et al. 2016; Sexton and Schuster 2017).
-
-We begin by focusing on the canonical QS environmental variables: bacterial population density and mass transfer (e.g. diffusion or advective flow). We first characterize the QS response as the extracellular signal concentration. Building on previous models of extracellular signal dynamics (James et al. 2000; Dockery and Keener 2001; Ward et al. 2001; Brown 2013; Cornforth et al. 2014) we assume that signal concentration increases in proportion to the corresponding synthase’s expression level, multiplied by the number of cells expressing synthase, and decreases due to a constant rate of decay and removal via mass transfer. These assumptions lead to the differential equation model of equation 3, where *S<sub>i</sub>* is the concentration of signal *i*, *E<sub>i</sub>* (**S**) is the expression level of the synthase for signal *i* (as a function of both signal concentrations, **S**, see equation 2) and *c<sub>i</sub>* a proportionality constant, *N* is the population density; *𝛿<sub>i</sub>* is the decay rate of signal *i,* and *m* is the rate of mass transfer.
-
-$$
-\frac{\mathrm{d}S_i}{\mathrm{dt}} \ \ = \ \ 
-c_i E_i(\mathbf{S})\cdot N \ \ - \ \ 
- \delta_i \cdot S_i \ \ - \ \ 
- m \cdot S_i
-\qquad{(3)}
-$$
-
-<img src="Figures/eq_dynamics.svg" width="100%"/>
-
-This equation models the dynamics of signal concentration in response to environmental conditions. In particular, its equilibrium values define the final signal concentrations that result from given values of population density and mass transfer rate. To solve for those equilibrium values, we estimate expression levels *E<sub>i</sub>* (**S**) from our experimental data (Equation 2, Table 2). The remaining parameters, *c<sub>i</sub>* and *𝜹<sub>i</sub>*, we estimate from published literature as detailed in the supporting information and summarized in Table S.3. Figure S.7 compares the model predictions with observations.
+Having established that both signals influence the expression levels of both synthase genes, we next consider how multiple quorum sensing systems affect the overall quorum sensing response. The methodology we apply to *lasI* and *rhlI* can also quantify the expression level response of other genes. Here we look at *lasB,* a classic QS effector gene that codes for the secreted elastase protein LasB and is widely used as a model of QS-mediated virulence (Casilag et al. 2016; Cigana et al. 2021) and cooperation (Diggle et al. 2007; Allen et al. 2016; Sexton and Schuster 2017).
 
 Though *lasB* expression is known to be influenced by both 3‑oxo‑C<sub>12</sub>‑HSL and C<sub>4</sub>‑HSL (Pearson, Pesci, and Iglewski 1997; Nouwens et al. 2003) our approach can explicitly quantify those influences. We use the same approach as with *lasI* and *rhlI:* measure luminescence of a *lasB* reporter in a signal null strain exposed to defined, exogenous concentrations of both signals. Figure 9 shows the resulting measurements.
 
@@ -184,12 +170,32 @@ These measurements allow us to estimate parameters for a *lasB* model based on e
 
 **Table 3. Multi-signal parameter estimates for *lasB.*** Model parameters for *lasB* expression as a function of multiple signal concentrations. Parameters are the same as in Table 2. Values shown with 95% confidence intervals. Half-concentration estimates less than 0.001 μM are below the limits of precision of the experimental data.
 
-With the parameter values from Figure 9 data (Table 3) we can predict *lasB* expression for combinations of signal concentrations. Furthermore, our parameterized models (Equation 3) can estimate equilibrium signal concentrations based on underlying evironmental properties (bacterial density and mass transfer). Integrating both models allows us to probe how *lasB* expression varies as those environmental conditions change. Figure 10 shows an example of that variation as a reaction norm (Stearns 1989; Rattray et al. 2022) of *lasB* expression against population density. The result is noteworthy as it captures a graded response rather than a threshold response traditionally assumed for quorum sensing. This graded response is consistent with the experimental observations of Rattray et al (2022).
+### Environmental Variation Shapes the Quorum Sensing Repsonse Through QS System Synergies
+
+We next extend our model quantifying *lasB* expression as a function of signal concentrations to analyze the population response to environmental variation. Different environmental conditions result in different signal levels. The resulting signal concentrations, in turn, determine the expression level of *lasB,* and translation of *lasB* into elastase shapes key aspects of the population response.
+
+We begin by focusing on the canonical QS environmental variables: bacterial population density and mass transfer (e.g. diffusion or advective flow). We first characterize the QS response as the extracellular signal concentration. Building on previous models of extracellular signal dynamics (James et al. 2000; Dockery and Keener 2001; Ward et al. 2001; Brown 2013; Cornforth et al. 2014) we assume that signal concentration increases in proportion to the corresponding synthase’s expression level, multiplied by the number of cells expressing synthase, and decreases due to a constant rate of decay and removal via mass transfer. These assumptions lead to the differential equation model of equation 3, where *S<sub>i</sub>* is the concentration of signal *i*, *E<sub>i</sub>* (**S**) is the expression level of the synthase for signal *i* (as a function of both signal concentrations, **S**, see equation 2) and *c<sub>i</sub>* a proportionality constant, *N* is the population density; *𝛿<sub>i</sub>* is the decay rate of signal *i,* and *m* is the rate of mass transfer.
+
+$$
+\frac{\mathrm{d}S_i}{\mathrm{dt}} \ \ = \ \ 
+c_i E_i(\mathbf{S})\cdot N \ \ - \ \ 
+ \delta_i \cdot S_i \ \ - \ \ 
+ m \cdot S_i
+\qquad{(3)}
+$$
+
+<img src="Figures/eq_dynamics.svg" width="100%"/>
+
+This equation models the dynamics of signal concentration in response to environmental conditions. In particular, its equilibrium values define the final signal concentrations that result from given values of population density and mass transfer rate. To solve for those equilibrium values, we estimate expression levels *E<sub>i</sub>* (**S**) from our experimental data (Equation 2, Table 2). The remaining parameters, *c<sub>i</sub>* and *𝜹<sub>i</sub>*, we estimate from published literature as detailed in the supporting information and summarized in Table S.3. Figure S.7 compares the model predictions with observations.
+
+With the parameter values from Figure 9 data (Table 3) we can predict *lasB* expression for combinations of signal concentrations. Furthermore, our parameterized models (Equation 3) can estimate equilibrium signal concentrations based on underlying evironmental properties (bacterial density and mass transfer). Integrating both models allows us to probe how *lasB* expression varies as those environmental conditions change.
+
+A simple example considers only variation in population density with no mass transfer. Figure 10 compares *lasB* expression predicted by our integrated model with experimental observations reported in (Rattray et al. 2022) over a range of population densities. The coefficient of determination (R<sup>2</sup>) of the fit is 0.91, demonstrating not only the utility of the approach but also providing strong theoretical support for the conclusions of that paper: quorum sensing responds in a graded manner rather than a threshold.
 
 <img src="Figures/lasb_response.svg" alt="lasb_response" />
 
 
-**Figure 10. *lasB* responds to increasing bacterial density in a graded manner.** Predicted *lasB* expression level is plotted against population density. For each density value, equation 3 provides an estimate of equilibrium signal concentrations for 3‑oxo‑C<sub>12</sub>‑HSL and C<sub>4</sub>‑HSL. The model of equation 2, parameterized by the estimates of Table 3, then predicts *lasB* expression from those concentrations.
+**Figure 10. *lasB* responds to increasing bacterial density in a graded manner.** Reaction norm (Stearns 1989) showing predicted *lasB* expression level. For each density value, equation 3 provides an estimate of equilibrium signal concentrations for 3‑oxo‑C<sub>12</sub>‑HSL and C<sub>4</sub>‑HSL. The model of equation 2, parameterized by the estimates of Table 3, then predicts *lasB* expression from those concentrations. The figure also shows experimental observations from (Rattray et al. 2022) Figure 2.
 
 ### Responses to Environmental Variation Clarify Quorum Sensing Design Principles
 
