@@ -233,16 +233,11 @@ In shifting from the molecular to the population level, we adopt common single s
 
 By choosing the *las* and *rhl* quorum sensing systems for this study, we focus on a relatively straightforward QS architecture. It consists of only two systems that reinforce each other. *P. aeruginosa* has other QS systems such as *pqs* (Pesci et al. 1999), however, and it is not unique in having more than two. Other species (*V. cholerae,* *A. fischeri,* and *V. harveyi*) have at least three parallel systems (Waters and Bassler 2005), and some may have as many as eight (Brachmann et al. 2013). Our modeling approach can accomodate all of these species as Equations 2 and 3 allow for any number of distinct QS systems.
 
-Furthermore, different systems do not always reinforce each other. In some cases one system can repress another, as is the case with the *pqs* system of *P. aeruginosa* (McGrath, Wade, and Pesci 2004). Cross-system repression has been identified in *B. subtilis* (Lazazzera, Solomon, and Grossman 1997), *V. fluvialis* (Wang et al. 2013), and *V. cholerae* (Herzog et al. 2019). Quantifying that repression with our models can distinguish different population-level behaviors. Repression by one system can limit expression of the other system, or it can stop expression entirely. Those possibilities, illustrated in Figure 12, may have vastly different effects on the population-level response to changes in stationary phase density.
+Furthermore, different systems do not always reinforce each other. In some cases one system can repress another, as is the case with the *pqs* system of *P. aeruginosa* (McGrath, Wade, and Pesci 2004). Cross-system repression has been identified in *B. subtilis* (Lazazzera, Solomon, and Grossman 1997), *V. fluvialis* (Wang et al. 2013), and *V. cholerae* (Herzog et al. 2019). Quantifying that repression with our models can distinguish different population-level behaviors. Repression by one system can limit expression of the other system, or it can stop expression entirely. Those possibilities may have vastly different effects on the population-level response to changes in stationary phase density.
 
-<img src="Figures/repression.svg" alt="repression" />
+Finally, although we are able to model QS architectures at the cellular and population level, it is not clear how traditional gene regulatory networks can achieve the responses we observe. Syed et al. (2023) show that gene expression cooperativity in *Drosophila* may be driven by enhancers, but their results are limited to a single transcription factor with multiple binding sites. Long et al. (2009) suggest that multiple activating transcription factors combine additively, but that can only be true if the effects of each are independent. In contrast, Kaplan et al. (2008) claim that multiple inputs controlling gene expression usually combine multiplicatively. This relationship holds when the binding of one factor to the promoter depends on the presence of the second at that promoter. As Figure 6 makes clear, neither approach can adequately explain our data.
 
-
-**Figure 12. Repressive quorum sensing systems can have various effects on the overall response.** The plot shows the overall response (e.g. expression level of a downstream gene) to population density for two types of repressive systems. It also shows the response of an unconstrained single system for comparison.
-
-Finally, although we are able to model QS architectures at the cellular and population level, it is not clear how traditional gene regulatory networks can achieve the responses we observe. Long et al. (2009) suggest that multiple activating transcription factors combine additively, but that can only be true if the effects of each are independent. In contrast, Kaplan et al. (2008) claim that multiple inputs controlling gene expression usually combine multiplicatively. This relationship holds when the binding of one factor to the promoter depends on the presence of the second at that promoter. As Figure 6 makes clear, neither approach can adequately explain our data.
-
-Sauer et al. (1995) make related observations for a protein complex in *Drosophila melanogaster*; both of the developmental regulators BCD and HB alone induce a 6-fold increase by themselves but combine to induce a greater than 65-fold increase. Their results offer a tantalizing possibility that further investigations into the mechanisms of *P. aeruginosa* quorum sensing interactions can provide insights into more general gene regulatory networks.
+Sauer et al. (1995) make related observations for a protein complex in *Drosophila melanogaster*; both of the developmental regulators BCD and HB alone induce a 6-fold increase by themselves but combine to induce a greater than 65-fold increase. These results offer a tantalizing possibility that further investigations into the mechanisms of *P. aeruginosa* quorum sensing interactions can provide insights into more general gene regulatory networks.
 
 ## Methods
 
@@ -351,6 +346,8 @@ Schuster, M, and EP Greenberg. 2007. “Early Activation of Quorum Sensing in *P
 Sexton, DJ, and M Schuster. 2017. “Nutrient Limitation Determines the Fitness of Cheaters in Bacterial Siderophore Cooperation.” *Nat Commun* 8 (1): 230.
 
 Stearns, SC. 1989. “The Evolutionary Significance of Phenotypic Plasticity.” *Bioscience*.
+
+Syed, S, Y Duan, and B Lim. 2023. “Modulation of Protein-DNA Binding Reveals Mechanisms of Spatiotemporal Gene Control in Early Drosophila Embryos.” *Elife* 12: e85997.
 
 Wang, Y, H Wang, W Liang, AJ Hay, Z Zhong, B Kan, and J Zhu. 2013. “Quorum Sensing Regulatory Cascades Control Vibrio Fluvialis Pathogenesis.” *J Bacteriol* 195 (16): 3583–89.
 
