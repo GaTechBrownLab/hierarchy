@@ -164,13 +164,14 @@ Table: architectures {#tbl:architectures}
 **Table S.[-@tbl:architectures]. Models of hierarchical and independent architectures can be normalized to ensure that maximum synthase expression is the same for all architectures.** Parameters are the same as those in the main text but with increased values where appropriate.
 </p></div>
 
-The result of these adjustments, shown in Figure [-@fig:lasb_responses2] shows the same qualitative differences as the unnormalized models in the main text. The reciprocal architecture remains the most sensitive to changes in population density and the most robust to signal loss from mass transfer.
+The result of these adjustments, shown in Figure [-@fig:lasb_scaled_heatmaps] shows the same qualitative differences as the unnormalized models in the main text. The reciprocal architecture remains the most sensitive to changes in population density and the most robust to signal loss from mass transfer.
 
-![lasb_responses2](Figures/lasb_responses2.svg){#fig:lasb_responses2}
+![lasb_scaled_heatmaps](Figures/lasb_scaled_heatmaps.svg){#fig:lasb_scaled_heatmaps}
 
 <div custom-style="Caption"><p>
-**Figure S.[-@fig:lasb_responses2]. The reciprocal QS architecture is more sensitive to population density and more robust to environmental interference.** Plots are the same as those in the corresponding figure in the main text, but show the normalized models.
+**Figure S.[-@fig:lasb_scaled_heatmaps]. The reciprocal QS architecture is more sensitive to population density and more robust to environmental interference.** Plots are the same as those in the corresponding figure in the main text, but show the normalized models.
 </p></div>
+
 
 
 ## References

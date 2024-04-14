@@ -79,7 +79,7 @@ By minimizing the sum of squared error (with non-linear regression using the Gau
 
 **Table 1. Single Signal Parameter Estimates.** Estimated fold-change, derived from raw parameters of equation 1 as (*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> , and half-concentration, *K*, values for gene expression as a function of a single signal in isolation. Values shown with 95% confidence intervals.
 
-### *las* and *rhl* Combine Synergistically
+### *las* and *rhl* Combine Non-Linearly and Synergistically
 
 Figures 3 and 4 consider the effects of each signal in isolation, but wildtype cells with functioning synthase genes can produce both signals. To understand environments where both signals are present, we use controlled concentrations of both signals in combination. Figure 5 presents those results in the form of heat maps. The qualitative responses of both genes are similar: raising the concentration of either signal increases expression regardless of the concentration of the other signal. As with our observations of C<sub>4</sub>‑HSL alone, these results demonstrate again that the *rhl* system (via C<sub>4</sub>‑HSL) affects the *las* system (*lasI* expression).
 
@@ -144,7 +144,7 @@ The parameter estimates in Table 2 quantify the relative effect of individual an
 
 **Figure 8. The *las* and *rhl* quorum sensing systems have a reciprocal, but unequal relationship.** Red arrows represent maximum fold-change induction from *las*’s 3‑oxo‑C<sub>12</sub>‑HSL and yellow arrows maximum fold-change induction from *rhl’*s C<sub>4</sub>‑HSL. The orange component is additional induction from the combination of both signals. Arrow thickness is proportional to fold-change. Inset shows relative contribution of each signal to total maximum fold-change for expression levels of *lasI* and *rhlI,* and half concentration values for each.
 
-### Synergies Determines Quorum Sensing Response
+### *las* and *rhl* Synergy Also Shapes Quorum Sensing Responses
 
 Having established that both signals influence the expression levels of both synthase genes, we next consider how multiple quorum sensing systems affect the overall quorum sensing response. The methodology we apply to *lasI* and *rhlI* can also quantify the expression level response of other genes. Here we look at *lasB,* a classic QS effector gene that codes for the secreted elastase protein LasB and is widely used as a model of QS-mediated virulence (Casilag et al. 2016; Cigana et al. 2021) and cooperation (Diggle et al. 2007; Allen et al. 2016; Sexton and Schuster 2017).
 
@@ -170,7 +170,7 @@ These measurements allow us to estimate parameters for a *lasB* model based on e
 
 **Table 3. Multi-signal parameter estimates for *lasB.*** Model parameters for *lasB* expression as a function of multiple signal concentrations. Parameters are the same as in Table 2. Values shown with 95% confidence intervals. Half-concentration estimates less than 0.001 μM are below the limits of precision of the experimental data.
 
-### Environmental Variation Shapes the Quorum Sensing Repsonse Through QS System Synergies
+### Mathematical Models Incorporating *las* and *rhl* Synergy Predict Quorum Sensing Response to Environmental Variation
 
 We next extend our model quantifying *lasB* expression as a function of signal concentrations to analyze the population response to environmental variation. Different environmental conditions result in different signal levels. The resulting signal concentrations, in turn, determine the expression level of *lasB,* and translation of *lasB* into elastase shapes key aspects of the population response.
 
@@ -186,7 +186,7 @@ $$
 
 <img src="Figures/eq_dynamics.svg" width="100%"/>
 
-This equation models the dynamics of signal concentration in response to environmental conditions. In particular, its equilibrium values define the final signal concentrations that result from given values of population density and mass transfer rate. To solve for those equilibrium values, we estimate expression levels *E<sub>i</sub>* (**S**) from our experimental data (Equation 2, Table 2). The remaining parameters, *c<sub>i</sub>* and *𝜹<sub>i</sub>*, we estimate from published literature as detailed in the supporting information and summarized in Table S.3. Figure S.7 compares the model predictions with observations.
+This equation models the dynamics of signal concentration in response to environmental conditions. In particular, its equilibrium values define the final signal concentrations that result from given values of population density and mass transfer rate. To solve for those equilibrium values, we estimate expression levels *E<sub>i</sub>* (**S**) from our experimental data (Equation 2, Table 2). The remaining parameters, *c<sub>i</sub>* and *𝜹<sub>i</sub>*, we estimate from published literature as detailed in the supporting information and summarized in Table S.3 andf Figure S.7.
 
 With the parameter values from Figure 9 data (Table 3) we can predict *lasB* expression for combinations of signal concentrations. Furthermore, our parameterized models (Equation 3) can estimate equilibrium signal concentrations based on underlying evironmental properties (bacterial density and mass transfer). Integrating both models allows us to probe how *lasB* expression varies as those environmental conditions change.
 
@@ -197,9 +197,9 @@ A simple example considers only variation in population density with no mass tra
 
 **Figure 10. *lasB* responds to increasing bacterial density in a graded manner.** Reaction norm (Stearns 1989) showing predicted *lasB* expression level. For each density value, equation 3 provides an estimate of equilibrium signal concentrations for 3‑oxo‑C<sub>12</sub>‑HSL and C<sub>4</sub>‑HSL. The model of equation 2, parameterized by the estimates of Table 3, then predicts *lasB* expression from those concentrations. The figure also shows experimental observations from (Rattray et al. 2022) Figure 2.
 
-### Responses to Environmental Variation Clarify Quorum Sensing Design Principles
+### The Architecture of the *las* and *rhl* Systems Shapes the Response to Environmental Variation
 
-Knowing that the *lasI/rhlI* reciprocal architecture creates the response of Figure 10, we next ask how that response differs from the response of hypothetical, alternative architectures. To answer that question, we recognize that Equation 2 is general enough to model hierarchical and independent architectures in addition to reciprocal architectures. Those alternatives emerge when specific *ɑ* parameter values are equal to zero. To understand the consequences of alternative architectures for *P. aeruginosa* we set the appropriate parameters to zero and note how the response changes. Table 4 shows the parameter values we use for the alternative architectures.
+We now return to our initial result—the architecture of the *las* and *rhl* systems is reciprocal rather than hierarchical or independent—and ask: Does that architecture influence the response to environmental variation? To answer that question, we recognize that Equation 2 is general enough to model hierarchical and independent architectures in addition to reciprocal architectures. Those alternatives emerge when specific *ɑ* parameter values are equal to zero. To understand the consequences of alternative architectures for *P. aeruginosa* we set the appropriate parameters to zero and note how the response, represented by *lasB* expression, changes. Table 4 shows the parameter values we use for the alternative architectures.
 
 | Gene   | Signal                   | Parameter       |                          Derivation                           | Reciprocal Architecture | Hierarchical Architecture | Independent Architecture |
 |--------|--------------------------|-----------------|:-------------------------------------------------------------:|:-----------------------:|:-------------------------:|:------------------------:|
@@ -212,12 +212,12 @@ Knowing that the *lasI/rhlI* reciprocal architecture creates the response of Fig
 
 **Table 4. Hierarchical and independent architectures are special cases of the reciprocal architecture.** The multi-signal model of Equation 2 can represent hypothetical, alternative QS architectures by setting appropriate *ɑ* values to zero. Zero *ɑ* values result in a corresponding maximum fold-change of 1. For a hierarchical architecture, this setting nullifies the effect of C<sub>4</sub>‑HSL on *lasI.* For an independent archictecture, this setting additionally nullifies the effect of 3‑oxo‑C<sub>12</sub>‑HSL on *rhlI.*
 
-Figure 11 plots *lasB* expression as reaction norms (Stearns 1989; Rattray et al. 2022) against population density (A) and mass transfer rate (B) for the three architectures. These results rely on the equilibrium signal concentrations estimated from the model parameters in Table 4. Compared to the baseline reciprocal architecture, the figure predicts that removing the influence of *rhl* on *las* (hierarchical architecture, dark green line) results in a delayed response to increasing density. Removing all *las/rhl* interactions (independent architecture, light green line) attenuates and delays the response to density. The reciprocal architecture is the most sensitive to changes in population density as its *lasB* expression fold-change increases the most for a given density value. Figure 10B examines the impact of different architectures on the bacteria’s response to the physical environment. In this case we show expression level as a function of processes affecting mass transfer such as advective flow or diffusive loss of signal. Here, the reciprocal architecture is the least sensitive to changes as its *lasB* expression has the smallest decline for a given mass transfer rate.
+Figure 11 displays *lasB* expression over a range of population densities and mass transfer rates for all three architectures. These results rely on the equilibrium signal concentrations estimated from the model parameters in Table 4. The reciprocal architecture shows an enhanced quorum sensing response compared to the alternatives: higher levels of *lasB* expression as population density increases, and greater retention of those high expression levels in the face of increasing mass transfer. The former is clear from the absolute expression levels in the figure. The latter can be seen in the slope of the lines for constant expression levels in each of the heat maps.
 
-<img src="Figures/lasb_responses.svg" alt="lasb_responses" />
+<img src="Figures/lasb_heatmaps.svg" alt="lasb_heatmaps" />
 
 
-**Figure 11. The reciprocal QS architecture is more sensitive to population density and more robust to environmental interference.** Panels A and B show expression of a effector gene under quorum sensing control (*lasB*). All graphs include the results for three QS architectures: independent *las* and *rhl* systems, a hierarchy with the *las* system controlling the *rhl* system, and a reciprocal architecture in which both systems influence each other. Panel A shows estimated fold-change in expression as a function of population density approximately equivalent to OD600. Panel B shows percentage decline from maximum expression as a function of mass transfer rate normalized to C<sub>4</sub>‑HSL decay rate. Response calculated from equation 2 model with parameters from Tables 4 and 3. Panels C through F show the equilibrium signal concentrations the model estimates. Table S.4 and Figure S.8 present an alternative analysis that normalizes maximum expression levels; that analysis yields the same qualitative results.
+**Figure 11. The reciprocal QS architecture generates a greater response to population density and is more robust to environmental interference.** The figure shows heat maps of *lasB* expression levels for three quorum sensing architectures. Both population density and mass transfer rate are varied over the same ranges for all heatmaps. The lines on each heat map indicate density and mass transfer values for which *lasB* expression is constant, either 50% of its maximum value (white) or 5% of its maximum value (black). Expression levels calculated from equation 2 model with parameters from Tables 4 and 3. Table S.4 and Figure S.8 present an alternative analysis that normalizes maximum expression levels; that analysis yields the same qualitative results.
 
 ## Discussion
 

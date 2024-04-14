@@ -3,14 +3,29 @@
 clear; IntializeNotebook(Quiet=true);
 %% Styles
 
-% SetStyles(); 
-FontName   = "Arial"; % "Lucida Sans OT";
+% Styles relevant for the notebook (live script) itself; not
+% relevant for actual plots, so not essential
+% SetStyles();
+
+% Next styles used in plots, so useful even in standard scripts
+% Define these as globals so that local functions can reference
+% them if needed.
+
+global FontName;
+FontName   = "Arial"; % "Lucida Sans OT"
+
+global C4Color C12Color MixedColor LasBColor LasIColor RhlIColor;
 C4Color    = [237,176,129]/255;
 C12Color   = [193,65,104]/255;
 MixedColor = [229,113,94]/255;
 LasBColor  = [44,49,114]/255;
 LasIColor  = [165,205,144]/255;
 RhlIColor  = [52,133,141]/255;
+
+% Custom color maps
+global crest flare;
+load("crest.mat");
+load("flare.mat");
 %% Setup
 
 % Retrieve model parameter estimates. Since these values are
@@ -54,6 +69,7 @@ c_d2 = lsqnonlin( ...
     [Inf Inf], ...           % Upper bounds for constants
     optimoptions('lsqnonlin', Display = "off") ...  % No logging
 );
+
 % Predict Concentrations
 
 Nmin = 0;
@@ -61,12 +77,13 @@ Nmax = max(0.8, 1.1 * max(DensitySignalData.density));
 Nrange = Nmin : (Nmax - Nmin) / 100 : Nmax;
 S1 = []; S2 = []; LasB = [];
 for N = Nrange
-    Sstar = Equilibrium(N = N, c_d2 = c_d2);
+    Sstar = Equilibrium(N = N, m_d2 = 0, c_d2 = c_d2);
     S1(end + 1) = Sstar(1); %#ok<SAGROW>
     S2(end + 1) = Sstar(2); %#ok<SAGROW>
     % Also estimate LasB while we're iterating through the range
     LasB(end + 1) = LasBExp(C12 = Sstar(1), C4 = Sstar(2)); %#ok<SAGROW>
 end
+
 % Compare Predictions and Observations
 
 PlotConstants = plot( ...
@@ -88,9 +105,9 @@ ylabel("Concentration (μM)", FontName=FontName, FontSize=14);
 title("Equilibrium Signal Concentration", FontName=FontName, FontSize=16);
 legend(["3–oxo–C_{12}–HSL", "C_{4}-HSL", "", ""], FontName=FontName, FontSize=14, Location='northwest');
 exportgraphics(ax, "../Prefigures/constants.pdf", 'ContentType', 'vector');
+%% _lasB_ Expression
 
-% Check _lasB_ Expression
-
+% Data from Rattray et al. 2022 (see text)
 AggregateDataFile = "../Raw Data/Rattray.csv";
 % We don't need the entire contents of the file, so parse it to detect
 % the options available and only retrieve the information we need.
@@ -103,17 +120,18 @@ AggregateData = readtable(AggregateDataFile, AggregateDataOptions);
 
 % Calculate model estimate of lasB expression for measured densities
 for i = 1: height(AggregateData)
-    Sstar = Equilibrium(N = AggregateData.od(i), c_d2 = c_d2);
+    Sstar = Equilibrium(N = AggregateData.od(i), m_d2 = 0, c_d2 = c_d2);
     AggregateData.model(i) = LasBExp(C12 = Sstar(1), C4 = Sstar(2));
 end
-
 
 % Linear regression to map observed pixel intensity to estimated expression.
 X = [ones(length(AggregateData.mean_expression), 1) AggregateData.mean_expression];
 Y = AggregateData.model;
 b = X \ Y;
 Ypredict = X * b;
-Rsq1 = 1 - sum((Y - Ypredict).^2)/sum((Y - mean(Y)).^2)
+
+% Calculate (and show) coefficient of determination
+R2 = 1 - sum((Y - Ypredict).^2)/sum((Y - mean(Y)).^2)
 
 Xrange = [1 1; 2.25 13.25];
 Yrange = Xrange' * b;
@@ -167,344 +185,128 @@ Columns = [
 ];
 
 % Varying Population Density
-
 Nrange = 0 : 0.01 : 1.0;
-Ntable = table( ...
-    'Size', [length(Architectures) * length(Nrange), height(Columns)], ...
-    'VariableNames', Columns(:,1), ...
-    'VariableTypes', Columns(:,2) ...
-);
 
-idx = 1;
-for idxArch = 1 : length(Architectures)
-    Architecture = Architectures{idxArch}{1};
-    Scale = Architectures{idxArch}{2};
-    S0 = [1, 1];
-    for N = Nrange
-        Sstar = Equilibrium(N = N, c_d2 = c_d2, Architecture = Architecture, Scale = Scale, S0 = S0);
-        lasB = LasBExp(C12 = Sstar(1), C4 = Sstar(2));
-        Ntable.Architecture(idx) = Architecture;
-        Ntable.Scaled(idx) = Scale;
-        Ntable.Density(idx) = N;
-        Ntable.MassTransfer(idx) = 0;
-        Ntable.C12(idx) = Sstar(1);
-        Ntable.C4(idx) = Sstar(2);
-        Ntable.lasB(idx) = lasB;
-        idx = idx + 1;
-        S0 = Sstar;
-    end
-end
 % Varying Mass Transfer
+Mrange = 0 : 0.05 : 5.0;
 
-Mrange = fliplr(0 : 0.05 : 5.0);
-Mtable = table( ...
-    'Size', [length(Architectures) * length(Mrange), height(Columns)], ...
+NMtable = table( ...
+    'Size', [length(Architectures) * length(Mrange) * length(Nrange), height(Columns)], ...
     'VariableNames', Columns(:,1), ...
     'VariableTypes', Columns(:,2) ...
 );
-Nmax = 5;
 
 idx = 1;
 for idxArch = 1 : length(Architectures)
     Architecture = Architectures{idxArch}{1};
     Scale = Architectures{idxArch}{2};
-    S0 = [5, 5];
-    for M = Mrange
-        Sstar = Equilibrium(N = Nmax, m = M, c_d2 = c_d2, Architecture = Architecture, Scale = Scale, S0 = S0);
-        lasB = LasBExp(C12 = Sstar(1), C4 = Sstar(2));
-        Mtable.Architecture(idx) = Architecture;
-        Mtable.Scaled(idx) = Scale;
-        Mtable.Density(idx) = Nmax;
-        Mtable.MassTransfer(idx) = M;
-        Mtable.C12(idx) = Sstar(1);
-        Mtable.C4(idx) = Sstar(2);
-        Mtable.lasB(idx) = lasB;
-        idx = idx + 1;
-        S0 = Sstar;
+    for N = Nrange
+        S0 = [1, 1];
+        for M = Mrange
+            Sstar = Equilibrium(N = N, m_d2 = M, c_d2 = c_d2, Architecture = Architecture, Scale = Scale, S0 = S0);
+            lasB = LasBExp(C12 = Sstar(1), C4 = Sstar(2));
+            NMtable.Architecture(idx) = Architecture;
+            NMtable.Scaled(idx) = Scale;
+            NMtable.Density(idx) = N;
+            NMtable.MassTransfer(idx) = M;
+            NMtable.C12(idx) = Sstar(1);
+            NMtable.C4(idx) = Sstar(2);
+            NMtable.lasB(idx) = lasB;
+            idx = idx + 1;
+            S0 = Sstar;
+        end
     end
 end
-% Visualize Results
 
-Nr  = Ntable(Ntable.Architecture == "reciprocal", :);
-Nhu = Ntable(Ntable.Architecture == "hierarchical" & ~Ntable.Scaled, :);
-Nhs = Ntable(Ntable.Architecture == "hierarchical" & Ntable.Scaled, :);
-Niu = Ntable(Ntable.Architecture == "independent" & ~Ntable.Scaled, :);
-Nis = Ntable(Ntable.Architecture == "independent" & Ntable.Scaled, :);
+% Extract lasB response as NxM matrix so it can be treated as
+% a pixel image. Note that the data must be sorted appropriately
+% so that the image is in row-major order with respect to mass
+% transfer. That means mass-transfer will be the x-axis of the
+% image. Also note that density is sorted in descending order
+% so that higher density values are first, e.g. the "top" of
+% the image and in their natural position for a y-axis.
 
-Mr  = Mtable(Mtable.Architecture == "reciprocal", :);
-Mhu = Mtable(Mtable.Architecture == "hierarchical" & ~Mtable.Scaled, :);
-Mhs = Mtable(Mtable.Architecture == "hierarchical" & Mtable.Scaled, :);
-Miu = Mtable(Mtable.Architecture == "independent" & ~Mtable.Scaled, :);
-Mis = Mtable(Mtable.Architecture == "independent" & Mtable.Scaled, :);
+Recip = reshape( ...
+          sortrows( ...
+            NMtable(NMtable.Architecture == "reciprocal", :), ...
+            {'MassTransfer', 'Density'}, {'ascend', 'descend'} ...
+          ).lasB, ...
+          length(Nrange), length(Mrange) ...
+        );
+Hier  = reshape( ...
+          sortrows( ...
+            NMtable(NMtable.Architecture == "hierarchical" & ~NMtable.Scaled, :), ...
+            {'MassTransfer', 'Density'}, {'ascend', 'descend'} ...
+          ).lasB, ...
+          length(Nrange), length(Mrange) ...
+        );
+Indep = reshape( ...
+          sortrows( ...
+            NMtable(NMtable.Architecture == "independent" & ~NMtable.Scaled, :), ...
+            {'MassTransfer', 'Density'}, {'ascend', 'descend'} ...
+          ).lasB, ...
+          length(Nrange), length(Mrange) ...
+        );
+HierScaled  = reshape( ...
+          sortrows( ...
+            NMtable(NMtable.Architecture == "hierarchical" & NMtable.Scaled, :), ...
+            {'MassTransfer', 'Density'}, {'ascend', 'descend'} ...
+          ).lasB, ...
+          length(Nrange), length(Mrange) ...
+        );
+IndepScaled = reshape( ...
+          sortrows( ...
+            NMtable(NMtable.Architecture == "independent" & NMtable.Scaled, :), ...
+            {'MassTransfer', 'Density'}, {'ascend', 'descend'} ...
+          ).lasB, ...
+          length(Nrange), length(Mrange) ...
+        );
 
-FigureUnscaled = figure;
-% Tiles = tiledlayout(2, 1);
-% TilesUnscaled = tiledlayout(Tiles, 4, 3, 'TileSpacing', 'compact');
-% TilesUnscaled.Layout.Tile = 1;
-% TilesUnscaled.Layout.TileSpan = [1 1];
+% Use the same range for all heatmaps so that they can be compared 
+% against each other easily. It's the max and min values from
+% the reciprocal architcture
 
-TilesUnscaled = tiledlayout(4, 3, 'TileSpacing', 'compact');
+ExpRange=[min(Recip,[],"all"), max(Recip,[],"all")];
 
-nexttile(TilesUnscaled, [ 2 2]);
-Plot1 = plot( ...
-    Niu.Density, Niu.lasB / min(Niu.lasB), ...
-    Nhu.Density, Nhu.lasB / min(Nhu.lasB), ...
-    Nr.Density, Nr.lasB / min(Nr.lasB), ...
-    'LineWidth', 3);
-Plot1(3).Color = [44,49,114]/255;
-Plot1(2).Color = [52,133,141]/255;
-Plot1(1).Color = [165,205,144]/255;
-ax = gca;
-ax.FontName = FontName;
-xlabel("Population Density (~ OD600)", FontName=FontName);
-xtickformat('%.1f')
-ylabel("Fold-Change", FontName=FontName);
-text(-0.1, 1.0, "A", FontName=FontName, FontWeight="bold", FontSize=12, Units="normalized", HorizontalAlignment="right", VerticalAlignment="bottom");
-title("\it lasB\rm\bf Expression", FontName=FontName, FontSize=13);
+% Generate native heatmap to check results below. This heatmap isn't used
+% in paper since low level functions provide better control over axes,
+% etc., but it can be helpful to verify low level results, especially
+% plot orientation. Note that MATLAB orients heatmaps so that rows are
+% shown in descending order, so the y-axis will be flipped.
 
-Legend = legend(["Independent", "Hierarchical", "Reciprocal"], FontName=FontName, Location="northwest", Direction="reverse");
-title(Legend, "QS Architecture", FontName=FontName);
+%figure
+%heatmap(NMtable(NMtable.Architecture == "reciprocal", :), ...
+%    "MassTransfer", "Density", ColorVariable="lasB", ...
+%    GridVisible="off", Colormap=flare);
 
-nexttile(7, [2 2]);
-Plot2 = plot( ...
-    Miu.MassTransfer, 100*Miu.lasB / max(Mr.lasB), ...
-    Mhu.MassTransfer, 100*Mhu.lasB / max(Mr.lasB), ...
-    Mr.MassTransfer,  100*Mr.lasB  / max(Mr.lasB), ...
-    'LineWidth', 3);
-Plot2(3).Color = [44,49,114]/255;
-Plot2(2).Color = [52,133,141]/255;
-Plot2(1).Color = [165,205,144]/255;
-ax = gca;
-ax.FontName = FontName;
-xlabel({'Mass Transfer Rate', '(Normalized to C_{4}-HSL Decay Rate)'}, FontName=FontName);
-ylabel("Percent of Maximum", FontName=FontName);
-ytickformat('%g%%');
-text(-0.1, 1.05, "B", FontName=FontName, FontWeight="bold", FontSize=12, Units="normalized", HorizontalAlignment="right", VerticalAlignment="bottom");
-NoteText = sprintf("For OD600 ≈ %2.1f", Nmax);
-Note1 = annotation(FigureUnscaled, "textbox", [0 0 1 1], ...
-    String=NoteText, ...
-    FontName=FontName, FontSize=7, ...
-    FitBoxToText="on");
-Note1.Position(1) = 0.48;
-Note1.Position(2) = -0.533;
+% Create the final heatmaps - unscaled versions first
+Heatmaps = figure;
+colormap(flare);
 
-TilesC4Unscaled = tiledlayout(TilesUnscaled, 2, 1);
-TilesC4Unscaled.Layout.Tile = 3;
-TilesC4Unscaled.Layout.TileSpan = [2 1];
+tiledlayout(1,3);
+nexttile;
+MakeHeatmap(expLevel=Recip, expRange=ExpRange, archName="Reciprocal", nRange=Nrange, mRange=Mrange);
+nexttile;
+MakeHeatmap(expLevel=Hier, expRange=ExpRange, archName="Hierarchical", nRange=Nrange, mRange=Mrange);
+nexttile;
+MakeHeatmap(expLevel=Indep, expRange=ExpRange, archName="Independent", nRange=Nrange, mRange=Mrange);
 
-nexttile(TilesC4Unscaled);
-Plot3 = plot( ...
-    Nr.Density,  Nr.C4,  ...
-    Nhu.Density, Nhu.C4, ...
-    Niu.Density, Niu.C4, ...
-    'LineWidth', 3);
-Plot3(1).Color = [44,49,114]/255;
-Plot3(2).Color = [52,133,141]/255;
-Plot3(3).Color = [165,205,144]/255;
-ax = gca;
-ax.FontName = FontName;
-xticks([]);
-xlabel("Population Density", FontName=FontName, FontSize=8);
-text(1.1, 1.0, "C", FontName=FontName, FontWeight="bold", FontSize=12, Units="normalized", HorizontalAlignment="right", VerticalAlignment="bottom");
-title("Signal Equilibrium        ", FontName=FontName, FontSize=12);
+exportgraphics(Heatmaps, "../Prefigures/lasb_heatmaps.pdf", 'ContentType', 'vector');
 
-nexttile(TilesC4Unscaled);
-Plot4 = plot( ...
-    Mr.MassTransfer,  Mr.C4,  ...
-    Mhu.MassTransfer, Mhu.C4, ...
-    Miu.MassTransfer, Miu.C4, ...
-    'LineWidth', 3);
-Plot4(1).Color = [44,49,114]/255;
-Plot4(2).Color = [52,133,141]/255;
-Plot4(3).Color = [165,205,144]/255;
-Plot4(2).LineStyle = "--";
-ax = gca;
-ax.FontName = FontName;
-xticks([]);
-xlabel("Mass Transfer Rate", FontName=FontName, FontSize=8);
-xlim([0 max(Mr.MassTransfer)])
-text(1.1, 1.05, "D", FontName=FontName, FontWeight="bold", FontSize=13, Units="normalized", HorizontalAlignment="right", VerticalAlignment="bottom");
-ylabel(TilesC4Unscaled, "C_{4}-HSL (μM)", FontName=FontName);
+% Repeat for scaled versions
 
-TilesC12Unscaled = tiledlayout(TilesUnscaled, 2, 1);
-TilesC12Unscaled.Layout.Tile = 9;
-TilesC12Unscaled.Layout.TileSpan = [2 1];
-nexttile(TilesC12Unscaled);
-Plot5 = plot( ...
-    Nr.Density,  Nr.C12,  ...
-    Nhu.Density, Nhu.C12, ...
-    Niu.Density, Niu.C12, ...
-    'LineWidth', 3);
-Plot5(1).Color = [44,49,114]/255;
-Plot5(2).Color = [52,133,141]/255;
-Plot5(3).Color = [165,205,144]/255;
-Plot5(3).LineStyle = "--";
-ax = gca;
-ax.FontName = FontName;
-xticks([]);
-xlabel("Population Density", FontName=FontName, FontSize=8);
-text(1.1, 1.0, "E", FontName=FontName, FontWeight="bold", FontSize=12, Units="normalized", HorizontalAlignment="right", VerticalAlignment="bottom");
+ScaledHeatmaps = figure;
+colormap(crest);
 
-nexttile(TilesC12Unscaled);
-Plot6 = plot( ...
-    Mr.MassTransfer,  Mr.C12,  ...
-    Mhu.MassTransfer, Mhu.C12, ...
-    Miu.MassTransfer, Miu.C12, ...
-    'LineWidth', 3);
-Plot6(1).Color = [44,49,114]/255;
-Plot6(2).Color = [52,133,141]/255;
-Plot6(3).Color = [165,205,144]/255;
-Plot6(3).LineStyle = "--";
-ax = gca;
-ax.FontName = FontName;
-xticks([]);
-xlabel("Mass Transfer Rate", FontName=FontName, FontSize=8);
-xlim([0 max(Mr.MassTransfer)])
-text(1.1, 1.05, "F", FontName=FontName, FontWeight="bold", FontSize=13, Units="normalized", HorizontalAlignment="right", VerticalAlignment="bottom");
-ylabel(TilesC12Unscaled, "3-oxo-C_{12}-HSL (μM)", FontName=FontName);
+tiledlayout(1,3);
+nexttile;
+MakeHeatmap(expLevel=Recip, expRange=ExpRange, archName="Reciprocal", nRange=Nrange, mRange=Mrange);
+nexttile;
+MakeHeatmap(expLevel=HierScaled, expRange=ExpRange, archName="Rescaled Hierarchical", nRange=Nrange, mRange=Mrange);
+nexttile;
+MakeHeatmap(expLevel=IndepScaled, expRange=ExpRange, archName="Rescaled Independent", nRange=Nrange, mRange=Mrange);
 
-exportgraphics(TilesUnscaled, "../Prefigures/lasb_responses.pdf", 'ContentType', 'vector');
-
-% TilesScaled = tiledlayout(Tiles, 4, 3, 'TileSpacing', 'compact');
-% TilesScaled.Layout.Tile = 2;
-% TilesScaled.Layout.TileSpan = [1 1];
-
-FigureScaled = figure;
-TilesScaled = tiledlayout(4, 3, 'TileSpacing', 'compact');
-
-nexttile(TilesScaled, [ 2 2]);
-Plot7 = plot( ...
-    Nis.Density, Nis.lasB / min(Nis.lasB), ...
-    Nhs.Density, Nhs.lasB / min(Nhs.lasB), ...
-    Nr.Density, Nr.lasB / min(Nr.lasB), ...
-    'LineWidth', 3);
-Plot7(3).Color = [44,49,114]/255;
-Plot7(2).Color = [52,133,141]/255;
-Plot7(1).Color = [165,205,144]/255;
-ax = gca;
-ax.FontName = FontName;
-xlabel("Population Density (~ OD600)", FontName=FontName);
-xtickformat('%.1f')
-ylabel("Fold-Change", FontName=FontName);
-text(-0.1, 1.0, "A", FontName=FontName, FontWeight="bold", FontSize=12, Units="normalized", HorizontalAlignment="right", VerticalAlignment="bottom");
-title("\it lasB\rm\bf Expression (Normalized)", FontName=FontName, FontSize=13);
-
-Legend = legend(["Independent", "Hierarchical", "Reciprocal"], FontName=FontName, Location="northwest", Direction="reverse");
-title(Legend, "QS Architecture", FontName=FontName);
-
-Note2 = annotation(FigureScaled, "textbox", [0 0 1 1], ...
-    String={ ...
-        'Non-reciprocal architectures', ...
-        'normalized to same maximum', ...
-        'expression levels as Reciprocal', ...
-        '(i.e. at N = ♾️, m = 0).'
-    }, ...
-    FontName=FontName, FontSize=7, ...
-    FitBoxToText="on");
-Note2.Position(1) = 0.41;
-Note2.Position(2) = -0.315;
-Note2.Margin = 3;
-
-nexttile(7, [2 2]);
-Plot8 = plot( ...
-    Mis.MassTransfer, 100*Mis.lasB / max(Mr.lasB), ...
-    Mhs.MassTransfer, 100*Mhs.lasB / max(Mr.lasB), ...
-    Mr.MassTransfer,  100*Mr.lasB  / max(Mr.lasB), ...
-    'LineWidth', 3);
-Plot8(3).Color = [44,49,114]/255;
-Plot8(2).Color = [52,133,141]/255;
-Plot8(1).Color = [165,205,144]/255;
-ax = gca;
-ax.FontName = FontName;
-xlabel({'Mass Transfer Rate', '(Normalized to C_{4}-HSL Decay Rate)'}, FontName=FontName);
-ylabel("Percent of Maximum", FontName=FontName);
-ytickformat('%g%%');
-text(-0.1, 1.05, "B", FontName=FontName, FontWeight="bold", FontSize=12, Units="normalized", HorizontalAlignment="right", VerticalAlignment="bottom");
-Note3 = annotation(FigureScaled, "textbox", [0 0 1 1], ...
-    String=NoteText, ...
-    FontName=FontName, FontSize=7, ...
-    FitBoxToText="on");
-Note3.Position(1) = 0.48;
-Note3.Position(2) = -0.533;
-
-TilesC4Scaled = tiledlayout(TilesScaled, 2, 1);
-TilesC4Scaled.Layout.Tile = 3;
-TilesC4Scaled.Layout.TileSpan = [2 1];
-
-nexttile(TilesC4Scaled);
-Plot9 = plot( ...
-    Nr.Density,  Nr.C4,  ...
-    Nhs.Density, Nhs.C4, ...
-    Nis.Density, Nis.C4, ...
-    'LineWidth', 3);
-Plot9(1).Color = [44,49,114]/255;
-Plot9(2).Color = [52,133,141]/255;
-Plot9(3).Color = [165,205,144]/255;
-ax = gca;
-ax.FontName = FontName;
-xticks([]);
-xlabel("Population Density", FontName=FontName, FontSize=8);
-text(1.1, 1.0, "C", FontName=FontName, FontWeight="bold", FontSize=12, Units="normalized", HorizontalAlignment="right", VerticalAlignment="bottom");
-title("Signal Equilibrium        ", FontName=FontName, FontSize=12);
-
-nexttile(TilesC4Scaled);
-Plot10 = plot( ...
-    Mr.MassTransfer,  Mr.C4,  ...
-    Mhs.MassTransfer, Mhs.C4, ...
-    Mis.MassTransfer, Mis.C4, ...
-    'LineWidth', 3);
-Plot10(1).Color = [44,49,114]/255;
-Plot10(2).Color = [52,133,141]/255;
-Plot10(3).Color = [165,205,144]/255;
-Plot10(2).LineStyle = "--";
-ax = gca;
-ax.FontName = FontName;
-xticks([]);
-xlabel("Mass Transfer Rate", FontName=FontName, FontSize=8);
-xlim([0 max(Mr.MassTransfer)])
-text(1.1, 1.05, "D", FontName=FontName, FontWeight="bold", FontSize=13, Units="normalized", HorizontalAlignment="right", VerticalAlignment="bottom");
-ylabel(TilesC4Scaled, "C_{4}-HSL (μM)", FontName=FontName);
-
-TilesC12Scaled = tiledlayout(TilesScaled, 2, 1);
-TilesC12Scaled.Layout.Tile = 9;
-TilesC12Scaled.Layout.TileSpan = [2 1];
-nexttile(TilesC12Scaled);
-Plot11 = plot( ...
-    Nr.Density,  Nr.C12,  ...
-    Nhs.Density, Nhs.C12, ...
-    Nis.Density, Nis.C12, ...
-    'LineWidth', 3);
-Plot11(1).Color = [44,49,114]/255;
-Plot11(2).Color = [52,133,141]/255;
-Plot11(3).Color = [165,205,144]/255;
-Plot11(3).LineStyle = "--";
-ax = gca;
-ax.FontName = FontName;
-xticks([]);
-xlabel("Population Density", FontName=FontName, FontSize=8);
-text(1.1, 1.0, "E", FontName=FontName, FontWeight="bold", FontSize=12, Units="normalized", HorizontalAlignment="right", VerticalAlignment="bottom");
-
-nexttile(TilesC12Scaled);
-Plot12 = plot( ...
-    Mr.MassTransfer,  Mr.C12,  ...
-    Mhs.MassTransfer, Mhs.C12, ...
-    Mis.MassTransfer, Mis.C12, ...
-    'LineWidth', 3);
-Plot12(1).Color = [44,49,114]/255;
-Plot12(2).Color = [52,133,141]/255;
-Plot12(3).Color = [165,205,144]/255;
-Plot12(3).LineStyle = "--";
-ax = gca;
-ax.FontName = FontName;
-xticks([]);
-xlabel("Mass Transfer Rate", FontName=FontName, FontSize=8);
-xlim([0 max(Mr.MassTransfer)])
-text(1.1, 1.05, "F", FontName=FontName, FontWeight="bold", FontSize=13, Units="normalized", HorizontalAlignment="right", VerticalAlignment="bottom");
-ylabel(TilesC12Scaled, "3-oxo-C_{12}-HSL (μM)", FontName=FontName);
-% FigureScaled.Position(4) = FigureScaled.Position(4) * 2;
-% exportgraphics(Tiles, "../Prefigures/lasb_responses.pdf", 'ContentType', 'vector');
-
-exportgraphics(TilesScaled, "../Prefigures/lasb_responses2.pdf", 'ContentType', 'vector');
+exportgraphics(ScaledHeatmaps, "../Prefigures/lasb_scaled_heatmaps.pdf", 'ContentType', 'vector');
 %% Local Functions
 
 function IntializeNotebook(Options)
@@ -696,7 +498,7 @@ function Residuals = DensitySignalObjectiveFn(Args)
 
     Residuals = zeros(height(Data), 1);
     for idx = 1 : height(Data)
-        Sstar = Equilibrium(N = Data.density(idx), c_d2 = c_d2);
+        Sstar = Equilibrium(N = Data.density(idx), m_d2 = 0, c_d2 = c_d2);
         if Data.signal(idx) == "C12"
             Residuals(idx, 1) = (Sstar(1) - Data.uM(idx)) / mean_C12;
         else
@@ -709,7 +511,7 @@ function Sstar = Equilibrium(Args)
 % Equilibrium() returns equilibrium concentrations of signals [C12, C4]
     arguments (Input)
         Args.N double;                   % population size
-        Args.m_d2 double = 0;            % mass transfer / C4 decay rate
+        Args.m_d2 double;                % mass transfer / C4 decay rate
         Args.c_d2 (2, 1) double;         % [c1_d2, c2_d2] constants
         Args.Architecture (1,:) char ... % QS architecture
             {mustBeMember(Args.Architecture,{'reciprocal', 'hierarchical', 'independent'})} ...
@@ -770,4 +572,97 @@ function DeltaS_d2 = dS_dt(Args)
         c_d2(2) * RhlI * N - S(2) * (1.0 + m_d2)
     ];
 
+end
+
+function MakeHeatmap(Args)
+% MakeHeatmap creates a heatmap of expression levels
+    arguments
+        Args.expLevel (:,:) double    % 2D expression level matrix
+        Args.expRange (1, 2) double   % extent of expression levels
+        Args.archName string          % type of architecture
+        Args.nRange (:, 1) double     % range of densities
+        Args.mRange (:, 1) double     % range of mass transfer rates
+    end
+
+    global FontName;
+
+    expLevel = Args.expLevel;
+    expRange = Args.expRange;
+    archName = Args.archName;
+    Nrange = Args.nRange;
+    Mrange = Args.mRange;
+
+    thresholds = [0.05, 0.5];
+    tLevels = thresholds * (expRange(2) - expRange(1)) + expRange(1);
+    tColors = {'black', 'white'};
+    tX = zeros(length(tLevels), 2);
+    tY = zeros(length(tLevels), 2);
+
+    for tIdx = 1 : length(tLevels)
+        t = tLevels(tIdx);
+        for Midx = 1 : length(Mrange)
+            [ ~, Nidx ] = min( abs( expLevel(:, Midx) - t ) );
+            Nthresh = Nrange(length(Mrange) - Nidx + 1);
+            Mthresh = Mrange(Midx);
+    
+            if Midx == 1
+                t1 = [Mthresh, Nthresh];
+            end
+            if Nidx == 1
+                if Midx == 1
+                    t1 = [0, 0];
+                    t2 = [0, 0];
+                else
+                    t2 = [Mthresh, Nthresh];
+                end
+                break;
+            elseif Midx == length(Mrange)
+                t2 = [Mthresh, Nthresh];
+                % break; % not needed since loop terminates here anyway
+            end
+        end
+        tX(tIdx, :) = [t1(1), t2(1)];
+        tY(tIdx, :) = [t1(2), t2(2)];
+    end
+
+    if contains(archName, "Hierarchical")
+        xLabel = {'Mass Transfer Rate', '(Normalized to C_{4}-HSL Decay Rate)'};
+    else
+        xLabel = "Mass Transfer Rate";
+    end
+
+    imagesc([0 5], [1 0], expLevel, expRange); set(gca, 'YDir','normal')
+    hold on;
+    xTicks = {'0', '1', '2', '3', '4', '5'};
+    set(gca,'XTickLabel', xTicks, 'fontsize', 6, 'FontName', FontName);
+    xlabel(xLabel, FontName=FontName, FontSize=9);
+    if archName == "Reciprocal"
+        ylabel("Population Density (~ OD600)", FontName=FontName, FontSize=9);
+    end
+    title(archName, FontName=FontName, FontSize=10);
+    pbaspect([1 1 1]);
+    
+    for tIdx = 1 : length(tLevels)
+        if sum(tX(tIdx, :) + tY(tIdx, :)) == 0
+            continue;
+        end
+        plot(tX(tIdx, :), tY(tIdx, :), LineWidth=1, Color=tColors{tIdx});
+        label = [num2str(round(100 * thresholds(tIdx))) '%'];
+        text(median(tX(tIdx, :)), median(tY(tIdx, :)), label, ...
+            Color=tColors{tIdx}, FontName=FontName, fontsize=9, ...
+            VerticalAlignment='top' ...x = 0.05
+        );
+    end
+    hold off;
+    
+    if contains(archName, "Independent")
+        Colorbar = colorbar();
+        Colorbar.Label.String = "\it lasB\rm\rm (RLU/OD)";
+        Colorbar.Label.FontName = FontName;
+        Colorbar.Label.FontSize = 9;
+        ColorbarOverlay = axes('position', Colorbar.Position, 'ylim', Colorbar.Limits, 'color', 'none', 'visible','off');
+        for tIdx = 1 : length(tLevels)
+            line(ColorbarOverlay.XLim, tLevels(tIdx)*[1 1], 'lineWidth', 1, 'color', tColors{tIdx}, 'parent', ColorbarOverlay);
+        end
+    end
 end
