@@ -144,6 +144,27 @@ Table: const {#tbl:const}
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:constants]. Equilibrium signal concentration predicted using proportionality constants.** Individual data points show experimental observations and dashed lines indicate model predictions.
 </p></div>
+### Analytic Solutions for Equilibrium
+
+It is possible to derive analytic solutions of Equation 2 (main text) for equilibrium concentrations in all architectures; however, the results are not especially helpful for deriving insights into the system behavior. For example, the independent architecture, which is the simplest considered, has the following equilibrium concentration of 3‑oxo‑C <sub>12</sub>‑HSL.
+$$
+S_1^* = \frac{
+\begin{align}
+c_1\,N\,(\alpha_{1,0} +\alpha_{1,1}) \\ - K_{1,1}\,(m+\delta_1)
+\end{align}
+\;+\sqrt{
+\begin{aligned}
+{K_{1,1} }^2 \,{\delta_1 }^2 +2\,{K_{1,1} }^2 \,\delta_1 \,m+{K_{1,1} }^2 \,m^2
++2\,K_{1,1} \,N\,\alpha_{1,0} \,c_1 \,\delta_1 \\
++2\,K_{1,1} \,N\,\alpha_{1,0} \,c_1 \,m -2\,K_{1,1} \,N\,\alpha_{1,1} \,c_1 \,\delta_1 -2\,K_{1,1} \,N\,\alpha_{1,1} \,c_1 \,m \\
++N^2 \,{\alpha_{1,0} }^2 \,{c_1 }^2 +2\,N^2 \,\alpha_{1,0} \,\alpha_{1,1} \,{c_1 }^2
++N^2 \,{\alpha_{1,1} }^2 \,{c_1 }^2
+\end{aligned}
+}
+}{2\,{\left(\delta_1 +m\right)}}
+$$
+
+
 ### Normalizing Alternate QS Architectures
 
 The main text analyzes hypothetical, alternative architectures by eliminating the influence of specific signals on specific genes. For example, the hierarchical architecture nullifies the influence of C<sub>4</sub>‑HSL on *lasI* without modifying the effect of 3‑oxo‑C<sub>12</sub>‑HSL on *lasI.* This change necessarily reduces the maximum expression level of *lasI,* and that reduction partially explains the different *lasB* response in a hierarchical architecture. Reducing maximum *lasI* expression alone, however, does not explain all of the differences in the *lasB* response. To expose those additional differences, we make additional adjustments to the model. In particular, we increase the expression of *lasI* due to 3‑oxo‑C<sub>12</sub>‑HSL to precisely compensate for the loss of expression due to C<sub>4</sub>‑HSL. Table S.[-@tbl:architectures] shows the full set of adjustments required to normalize the maximum synthase expression levels across all architectures.
