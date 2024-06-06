@@ -130,8 +130,8 @@ Data from [@Rattray2022] includes measurements of equilibrium signal concentrati
 
 | Signal _i_                   | Proportionality Constant $c_i/\delta_2$ |
 | :--------------------------- | --------------------------------------: |
-| **3‑oxo‑C<sub>12</sub>‑HSL** |                              1.3 nM/RLU |
-| **C<sub>4</sub>‑HSL**        |                              2.5 nM/RLU |
+| **3‑oxo‑C<sub>12</sub>‑HSL** |                             12.7 pM/RLU |
+| **C<sub>4</sub>‑HSL**        |                             25.4 pM/RLU |
 
 Table: const {#tbl:const}
 
