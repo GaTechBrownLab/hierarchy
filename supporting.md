@@ -84,10 +84,62 @@ Gene expression data for *lasI,* *rhlI,* and *lasB* was collected every hour for
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:lasb_time]. Expression level of _lasB_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis.
 </p></div>
+### Single-Signal Models
+
+Table S.[-@tbl:singlesignal] shows the parameter estimates for the single-signal model of Equation 1 as maximum fold-change ((*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub>) and half-concentration values (_K_) for both signals.
+
+| Gene   | Signal                   | Parameter        |                Derivation                 |          Estimate          |      95% C.I. |
+| ------ | ------------------------ | ---------------- | :---------------------------------------: | :------------------------: | ------------: |
+| *lasI* |                          | Basal expression |              *ɑ*<sub>0</sub>              | 1670 <small>RLU/OD</small> |   1619 – 1721 |
+|        | 3‑oxo‑C<sub>12</sub>‑HSL | Max fold-change  | (*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> |            38 ×            |       36 – 40 |
+|        |                          | ½ conc.          |                    *K*                    |          0.24 μM           |   0.17 – 0.30 |
+|        | C<sub>4</sub>‑HSL        | Max fold-change  | (*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> |           6.4 ×            |     5.8 – 7.0 |
+|        |                          | ½ conc.          |                    *K*                    |           1.0 μM           |     0.7 – 1.4 |
+| *rhlI* |                          | Basal expression |              *ɑ<sub>0</sub>*              | 1861 <small>RLU/OD</small> |   1798 – 1923 |
+|        | 3‑oxo‑C<sub>12</sub>‑HSL | Max fold-change  | (*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> |            35 ×            |       34 – 36 |
+|        |                          | ½ conc.          |                    *K*                    |          0.052 μM          | 0.031 – 0.073 |
+|        | C<sub>4</sub>‑HSL        | Max fold-change  | (*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> |           6.4 ×            |     5.3 – 7.4 |
+|        |                          | ½ conc.          |                    *K*                    |           1.6 μM           |     0.8 – 2.4 |
+
+Table: singlesignal {#tbl:singlesignal}
+
+<div custom-style="Caption"><p>
+**Table S.[-@tbl:singlesignal]. Single Signal Parameter Estimates.** Estimated fold-change, derived from raw parameters of Equation 1 (main text) as (*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> , and half-concentration, *K*, values for gene expression as a function of a single signal in isolation. Values shown with 95% confidence intervals.
+</p></div>
+
 
 ### Multi-Signal Models
 
-Figure 7 in the main text summarizes the predictions of the multi-signal models for *lasI* and *rhlI* expression. The following figures provide a more detailed comparison of the model predictions for all three genes.
+Table S.[-@tbl:multisignal] shows the parameter estimates for the multi-signal model of Equation 2.
+
+| Gene   | Signal                   | Parameter                            |                          Derivation                          |          Estimate          |      95% C.I. |
+| ------ | ------------------------ | ------------------------------------ | :----------------------------------------------------------: | :------------------------: | ------------: |
+| *lasI* |                          | Basal expression                     |                      *ɑ*<sub>1,0</sub>                       | 1670 <small>RLU/OD</small> |   1619 – 1721 |
+|        | 3‑oxo‑C<sub>12</sub>‑HSL | Max fold-change                      | (*ɑ*<sub>1,1</sub> + *ɑ*<sub>1,0</sub>) / *ɑ*<sub>1,0</sub>  |            38 ×            |       36 – 40 |
+|        |                          | ½ conc.                              |                      *K*<sub>1,1</sub>                       |          0.24 μM           |   0.17 – 0.30 |
+|        | C<sub>4</sub>‑HSL        | Max fold-change                      | (*ɑ*<sub>1,2</sub> + *ɑ*<sub>1,0</sub>) / *ɑ*<sub>1,0</sub>  |           6.4 ×            |     5.8 – 7.0 |
+|        |                          | ½ conc.                              |                      *K*<sub>1,2</sub>                       |           1.0 μM           |     0.7 – 1.4 |
+|        | Combined                 | Max fold-change                      | (*ɑ*<sub>1,1,2</sub> + *ɑ*<sub>1,0</sub>) / *ɑ*<sub>1,0</sub> |            30 ×            |       29 – 31 |
+|        |                          | ½ conc. for 3‑oxo‑C<sub>12</sub>‑HSL |                    *K*<sub>*Q*1,1,2</sub>                    |         < 0.001 μM         |               |
+|        |                          | ½ conc. for C<sub>4</sub>-HSL        |                    *K*<sub>*Q*1,2,1</sub>                    |          0.003 μM          |     0 – 0.011 |
+| *rhlI* |                          | Basal expression                     |                      *ɑ*<sub>2,0</sub>                       | 1861 <small>RLU/OD</small> |   1798 – 1923 |
+|        | 3‑oxo‑C<sub>12</sub>‑HSL | Max fold-change                      | (*ɑ*<sub>2,1</sub> + *ɑ*<sub>2,0</sub>) / *ɑ*<sub>2,0</sub>  |            35 ×            |       34 – 36 |
+|        |                          | ½ conc.                              |                      *K*<sub>2,1</sub>                       |          0.052 μM          | 0.031 – 0.073 |
+|        | C<sub>4</sub>‑HSL        | Max fold-change                      | (*ɑ*<sub>2,2</sub> + *ɑ*<sub>2,0</sub>) / *ɑ*<sub>2,0</sub>  |           6.4 ×            |     5.3 – 7.4 |
+|        |                          | ½ conc.                              |                      *K*<sub>2,2</sub>                       |           1.6 μM           |     0.8 – 2.4 |
+|        | Combined                 | Max fold-change                      | (*ɑ*<sub>2,1,2</sub> + *ɑ*<sub>1,0</sub>) / *ɑ*<sub>1,0</sub> |            27 ×            |       26 – 28 |
+|        |                          | ½ conc. for 3‑oxo‑C<sub>12</sub>‑HSL |                    *K*<sub>*Q*2,1,2</sub>                    |         < 0.001 μM         |               |
+|        |                          | ½ conc. for C<sub>4</sub>-HSL        |                    *K*<sub>*Q*2,2,1</sub>                    |         < 0.001 μM         |               |
+
+Table: multisignal {#tbl:multisignal}
+
+<div custom-style="Caption"><p>
+**Table S.[-@tbl:multisignal]. Multi-signal parameter estimates.** Model parameters for gene expression as a function of multiple signal concentrations. Parameter definitions are the same as in Table S.[-@tbl:singlesignal] with addition of cooperative fold-change, again derived from raw parameters as (*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> ,and cooperative half-concentration *K<sub>Q</sub>.* Values shown with 95% confidence intervals.
+</p></div>
+
+
+
+Figure 7 in the main text summarizes the predictions of the multi-signal models for *lasI* and *rhlI* expression. The following figures provide a more detailed comparison of the model predictions for both genes.
 
 ![model_lasi](Figures/model_lasi.svg){#fig:model_lasi}
 
@@ -101,11 +153,40 @@ Figure 7 in the main text summarizes the predictions of the multi-signal models 
 **Figure S.[-@fig:model_rhli]. Multi-signal model for _rhlI_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values.
 </p></div>
 
+Table S.[-@tbl:explasb] shows the parameter estimates for *lasB* expression.
+
+| Signal                   | Parameter                            |                          Derivation                          |          Estimate          |    95% C.I. |
+| ------------------------ | ------------------------------------ | :----------------------------------------------------------: | :------------------------: | ----------: |
+|                          | Basal Expression                     |                      *ɑ*<sub>3,0</sub>                       | 1588 <small>RLU/OD</small> |  1516 –1660 |
+| 3‑oxo‑C<sub>12</sub>‑HSL | Max fold-change                      | (*ɑ*<sub>3,1</sub> + *ɑ*<sub>3,0</sub>) / *ɑ*<sub>3,0</sub>  |           6.1 ×            |   5.6 – 6.7 |
+|                          | ½ conc.                              |                      *K*<sub>3,1</sub>                       |           2.5 μM           |   1.0 – 3.0 |
+| C<sub>4</sub>‑HSL        | Max fold-change                      | (*ɑ*<sub>3,2</sub> + *ɑ*<sub>3,0</sub>) / *ɑ*<sub>3,0</sub>  |           1.1 ×            |   1.1 – 1.1 |
+|                          | ½ conc.                              |                      *K*<sub>3,2</sub>                       |         < 0.001 μM         |             |
+| Combined                 | Max fold-change                      | (*ɑ*<sub>3,1,2</sub> + *ɑ*<sub>3,0</sub>) / *ɑ*<sub>3,0</sub> |            23 ×            |     22 – 24 |
+|                          | ½ conc. for 3‑oxo‑C<sub>12</sub>‑HSL |                    *K*<sub>*Q*3,1,2</sub>                    |          0.42 μM           | 0.35 – 0.48 |
+|                          | ½ conc. for C<sub>4</sub>-HSL        |                    *K*<sub>*Q*3,2,1</sub>                    |          0.22 μM           | 0.18 – 0.25 |
+
+Table: explasb {#tbl:explasb}
+
+<div custom-style="Caption"><p>
+**Table S.[-@tbl:explasb]. Multi-signal parameter estimates for *lasB.*** Model parameters for *lasB* expression as a function of multiple signal concentrations. Parameter definitions are the same as in Table S.[-@tbl:multisignal]. Values shown with 95% confidence intervals. Half-concentration estimates less than 0.001 μM are below the limits of precision of the experimental data.
+</p></div>
+Using the parameter values, the model predicts lasB expression as shown in Figure S.[-@fig:lasb_model].
+
+![lasb_model](Figures/lasb_model.svg){#fig:lasb_model}
+
+<div custom-style="Caption"><p>
+**Figure S.[-@fig:lasb_model]. Multi-signal model for _lasB_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values.
+</p></div>
+
+Figure S.[-@fig:model_lasb] presents a more detailed comparison of the model predictions and observations.
+
 ![model_lasb](Figures/model_lasb.svg){#fig:model_lasb}
 
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:model_lasb]. Multi-signal model for _lasB_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values.
 </p></div>
+
 ### Signal Dynamics
 
 We analyze signal dynamics using the model from the main text where the per-capita single production rater is assumed to be proportional to the synthase expression level, $E_i(\mathbf{S})$. The proportionality constant is $c_i$.
@@ -164,10 +245,29 @@ c_1\,N\,(\alpha_{1,0} +\alpha_{1,1}) \\ - K_{1,1}\,(m+\delta_1)
 }{2\,{\left(\delta_1 +m\right)}}
 $$
 
+### Alternate QS Architectures
+
+Table S.[-@tbl:architectures] shows the parameter values that allow Equation 2 (main text) to represent various QS architectures.
+
+| Gene   | Signal                   | Parameter       |                          Derivation                          | Reciprocal Architecture | Hierarchical  Architecture | Independent Architecture |
+| ------ | ------------------------ | --------------- | :----------------------------------------------------------: | :---------------------: | :------------------------: | :----------------------: |
+| *lasI* | 3‑oxo‑C<sub>12</sub>‑HSL | Max fold-change | (*ɑ*<sub>1,1</sub> + *ɑ*<sub>1,0</sub>) / *ɑ*<sub>1,0</sub>  |          38 ×           |            38 ×            |           38 ×           |
+|        | C<sub>4</sub>‑HSL        | Max fold-change | (*ɑ*<sub>1,2</sub> + *ɑ*<sub>1,0</sub>) / *ɑ*<sub>1,0</sub>  |          6.4 ×          |            1 ×             |           1 ×            |
+|        | Combined                 | Max fold-change | (*ɑ*<sub>1,1,2</sub> + *ɑ*<sub>1,0</sub>) / *ɑ*<sub>1,0</sub> |          30 ×           |            1 ×             |           1 ×            |
+| *rhlI* | 3‑oxo‑C<sub>12</sub>‑HSL | Max fold-change | (*ɑ*<sub>2,1</sub> + *ɑ*<sub>2,0</sub>) / *ɑ*<sub>2,0</sub>  |          35 ×           |            35 ×            |           1 ×            |
+|        | C<sub>4</sub>‑HSL        | Max fold-change | (*ɑ*<sub>2,2</sub> + *ɑ*<sub>2,0</sub>) / *ɑ*<sub>2,0</sub>  |          6.4 ×          |           6.4 ×            |          6.4 ×           |
+|        | Combined                 | Max fold-change | (*ɑ*<sub>2,1,2</sub> + *ɑ*<sub>1,0</sub>) / *ɑ*<sub>1,0</sub> |          27 ×           |            27 ×            |           1 ×            |
+
+Table: architectures {#tbl:architectures}
+
+<div custom-style="Caption"><p>
+**Table S.[-@tbl:architectures]. Hierarchical and independent architectures are special cases of the reciprocal architecture.** The multi-signal model of Equation 2 (main text) can represent hypothetical, alternative QS architectures by setting appropriate *ɑ* values to zero. Zero *ɑ* values result in a corresponding maximum fold-change of 1. For a hierarchical architecture, this setting nullifies the effect of C<sub>4</sub>‑HSL on *lasI.* For an independent archictecture, this setting additionally nullifies the effect of 3‑oxo‑C<sub>12</sub>‑HSL on *rhlI.*
+</p></div>
+
 
 ### Normalizing Alternate QS Architectures
 
-The main text analyzes hypothetical, alternative architectures by eliminating the influence of specific signals on specific genes. For example, the hierarchical architecture nullifies the influence of C<sub>4</sub>‑HSL on *lasI* without modifying the effect of 3‑oxo‑C<sub>12</sub>‑HSL on *lasI.* This change necessarily reduces the maximum expression level of *lasI,* and that reduction partially explains the different *lasB* response in a hierarchical architecture. Reducing maximum *lasI* expression alone, however, does not explain all of the differences in the *lasB* response. To expose those additional differences, we make additional adjustments to the model. In particular, we increase the expression of *lasI* due to 3‑oxo‑C<sub>12</sub>‑HSL to precisely compensate for the loss of expression due to C<sub>4</sub>‑HSL. Table S.[-@tbl:architectures] shows the full set of adjustments required to normalize the maximum synthase expression levels across all architectures.
+Table S.[-@tbl:architectures] analyzes hypothetical, alternative architectures by eliminating the influence of specific signals on specific genes. For example, the hierarchical architecture nullifies the influence of C<sub>4</sub>‑HSL on *lasI* without modifying the effect of 3‑oxo‑C<sub>12</sub>‑HSL on *lasI.* This change necessarily reduces the maximum expression level of *lasI,* and that reduction partially explains the different *lasB* response in a hierarchical architecture. Reducing maximum *lasI* expression alone, however, does not explain all of the differences in the *lasB* response. To expose those additional differences, we make additional adjustments to the model. In particular, we increase the expression of *lasI* due to 3‑oxo‑C<sub>12</sub>‑HSL to precisely compensate for the loss of expression due to C<sub>4</sub>‑HSL. Table S.[-@tbl:architectures2] shows the full set of adjustments required to normalize the maximum synthase expression levels across all architectures.
 
 
 | Gene | Signal | Parameter | Derivation | Reciprocal Architecture | Hierarchical  Architecture | Independent Architecture |
@@ -179,18 +279,18 @@ The main text analyzes hypothetical, alternative architectures by eliminating th
 | | C<sub>4</sub>‑HSL | Max fold-change | (*ɑ*<sub>2,2</sub> + *ɑ*<sub>2,0</sub>) / *ɑ*<sub>2,0</sub> | 6.4 × | 6.4 × | 66 × |
 | | Combined | Max fold-change | (*ɑ*<sub>2,1,2</sub> + *ɑ*<sub>1,0</sub>) / *ɑ*<sub>1,0</sub> | 27 × | 27 × | 1 × |
 
-Table: architectures {#tbl:architectures}
+Table: architectures {#tbl:architectures2}
 
 <div custom-style="Caption"><p>
-**Table S.[-@tbl:architectures]. Models of hierarchical and independent architectures can be normalized to ensure that maximum synthase expression is the same for all architectures.** Parameters are the same as those in the main text but with increased values where appropriate.
+**Table S.[-@tbl:architectures2]. Models of hierarchical and independent architectures can be normalized to ensure that maximum synthase expression is the same for all architectures.** Parameters are the same as those in Table S.[-@tbl:architectures] but with increased values where appropriate.
 </p></div>
 
-The result of these adjustments, shown in Figure [-@fig:lasb_scaled_heatmaps] shows the same qualitative differences as the unnormalized models in the main text. The reciprocal architecture remains the most sensitive to changes in population density and the most robust to signal loss from mass transfer.
+### Temporal Dynamics
 
-![lasb_scaled_heatmaps](Figures/lasb_scaled_heatmaps.svg){#fig:lasb_scaled_heatmaps}
+![lasb_time_response](Figures/lasb_time_response.svg){#fig:lasb_time_response}
 
 <div custom-style="Caption"><p>
-**Figure S.[-@fig:lasb_scaled_heatmaps]. The reciprocal QS architecture is more sensitive to population density and more robust to environmental interference.** Plots are the same as those in the corresponding figure in the main text, but show the normalized models.
+**Figure S.[-@fig:lasb_time_response]. Time response of *lasB* expression for reciprocal, rescaled hierarchical, and rescaled independent architectures. Dynamics are those of Equation 3 (main text) with parameters from Table S.[-@tbl:architectures2].
 </p></div>
 
 
