@@ -1,10 +1,11 @@
 # Quantifying Multi-Signal Quorum Sensing: The *las* and *rhl* Systems in *Pseudomonas aeruginosa* Form a Biased Reciprocal Network That Can Tune Responses to Physical and Social Environments
 
-Stephen Thomas<sup>1</sup>, Ayatollah Samir El-Zayat<sup>2</sup>, James Gurney<sup>3</sup>, Jennifer Rattray<sup>1</sup>, Sam P. Brown<sup>1</sup>
+Stephen Thomas<sup>1</sup>, Ayatollah S. El-Zayat<sup>2</sup>, James Gurney<sup>3</sup>, Jennifer Rattray<sup>1,4</sup>, Sam P. Brown<sup>1</sup>
 
 > 1. School of Biological Sciences, Georgia Institute of Technology, Atlanta, GA USA 30332.
-> 2. Faculty of Agriculture, Cairo University, Cairo, Egypt 12613.
+> 2. Department of Microbiology, Faculty of Agriculture, Cairo University, Giza 12613, Egypt.
 > 3. Department of Biology, College of Arts and Sciences, Georgia State University, Atlanta, GA USA 30303.
+> 4. Present address: Sandia National Laboratories, Albuquerque, NM, USA.
 
 **Abstract:** Bacterial quorum sensing is often mediated by multiple signaling systems that interact with each other. The quorum sensing systems of *Pseudomonas aeruginosa,* for example, have been considered hierarchical, with the *las* system acting as a master regulator. By experimentally controlling the concentration of auto-inducer signals in a signal deficient strain (PAO1Δ*lasI*Δ*rhlI*), we show that the two primary quorum sensing systems—_las_ and _rhl_—act reciprocally rather than hierarchically. Just as the *las* system's 3‑oxo‑C<sub>12</sub>‑HSL can induce increased expression of *rhlI,* the *rhl* system's C<sub>4</sub>‑HSL increases the expression level of *lasI.* We develop a mathematical model to quantify relationships both within and between the *las* and *rhl* quorum sensing systems and the downstream genes they influence. The results show that not only do the systems interact in a reciprocal manner, but they do so asymmetrically, cooperatively, and nonlinearly, with the combination of C<sub>4</sub>‑HSL and 3‑oxo‑C<sub>12</sub>‑HSL increasing expression level far more than the sum of their individual effects. We next extend our parameterized mathematical model to generate quantitative predictions on how a QS-controlled effector gene (*lasB*) responds to changes in bacterial stationary phase density, and find close quantitative agreement with an independent dataset. Finally, we use a counter-factual approach to assess how changes in multi-signal interactions modulate functional responses to  variation in social (population density) and physical (mass transfer) environment and demonstrate that a reciprocal architecture is more responsive to density and more robust to mass transfer than a strict hierarchy.
 
