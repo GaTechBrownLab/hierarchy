@@ -290,10 +290,20 @@ Table: architectures {#tbl:architectures2}
 ![lasb_time_response](Figures/lasb_time_response.svg){#fig:lasb_time_response}
 
 <div custom-style="Caption"><p>
-**Figure S.[-@fig:lasb_time_response]. Time response of *lasB* expression for reciprocal, rescaled hierarchical, and rescaled independent architectures. Dynamics are those of Equation 3 (main text) with parameters from Table S.[-@tbl:architectures2].
+**Figure S.[-@fig:lasb_time_response]. Time response of *lasB* expression for reciprocal, rescaled hierarchical, and rescaled independent architectures.** Dynamics are those of Equation 3 (main text) with parameters from Table S.[-@tbl:architectures2].
 </p></div>
+### Signal Concentration Response
 
+![signals_heatmaps](Figures/signals_heatmaps.svg){#fig:signals_heatmaps}
 
+<div custom-style="Caption"><p>
+**Figure S.[-@fig:signals_heatmaps]. Signal concentration as a function of density and mass transfer varies based on the quorum sensing architecture.** The figure shows heat maps of equilibrium 3‑oxo‑C<sub>12</sub>‑HSL and C<sub>4</sub>‑HSL concentration for three quorum sensing architectures. Both population density and mass transfer rate are varied over the same ranges for all heatmaps. The lines on each heat map indicate density and mass transfer values for which equilibrium concentration is constant, either 50% of its maximum value (white) or 5% of its maximum value (black). Equilibrium concentrations calculated from equation 3 model with parameters from Table S.[-@tbl:multisignal].
+</p></div>
+![signal_ratio](Figures/signal_ratio.svg){#fig:signal_ratio}
+
+<div custom-style="Caption"><p>
+**Figure S.[-@fig:signal_ratio]. Ratio of signal concentrations as a function of density and mass transfer varies based on the quorum sensing architecture.** The figure shows heat maps of the ratio of equilibrium 3‑oxo‑C<sub>12</sub>‑HSL to C<sub>4</sub>‑HSL concentration for the reciprocal architecture. Equilibrium concentrations calculated from equation 3 model with parameters from Table S.[-@tbl:multisignal].
+</p></div>
 
 ## References
 
