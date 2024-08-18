@@ -304,6 +304,44 @@ Table: architectures {#tbl:architectures2}
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:signal_ratio]. Ratio of signal concentrations as a function of density and mass transfer varies based on the quorum sensing architecture.** The figure shows heat maps of the ratio of equilibrium 3‑oxo‑C<sub>12</sub>‑HSL to C<sub>4</sub>‑HSL concentration for the reciprocal architecture. Equilibrium concentrations calculated from equation 3 model with parameters from Table S.[-@tbl:multisignal].
 </p></div>
+### Three Signal Models
+
+The hypothetical three-signal models of the main text’s discussion are based oh a simplified version of the _las_ and _rhl_ interactions. Table S.[-@tbl:multisignal] provides the starting point for the models. For ease of computation, the second-order effects are ignored by setting _ɑ<sub>i,j,j`</sub>_ to zero. Parameters for the third signal (_i_ = 3) are initailly based on convenient intermediate values between those of _las_ and _rhl_ and then varied as neccessary to demontrate the various responses. Table S.[-@tbl:three_signal] shows the values for all non-zero parameters in all models.
+
+| Parameter                   | Weak                | Strong              | Limited             | Damped              |
+| --------------------------- | ------------------- | ------------------- | ------------------- | ------------------- |
+| 𝛼<sub>1,0</sub>             | 1670                | 1670                | 1670                | 1670                |
+| 𝛼<sub>2,0</sub>             | 1861                | 1861                | 1861                | 1861                |
+| 𝛼<sub>3,0</sub>             | 10000               | 10000               | 10000               | 10000               |
+| 𝛼<sub>1,1</sub>             | 61000               | 61000               | 61000               | 61000               |
+| 𝛼<sub>2,2</sub>             | 10000               | 10000               | 10000               | 10000               |
+| 𝛼<sub>3,3</sub>             | 10000               | 10000               | 10000               | 10000               |
+| 𝛼<sub>1,2</sub>             | 9000                | 9000                | 9000                | 9000                |
+| 𝛼<sub>2,1</sub>             | 63000               | 63000               | 63000               | 63000               |
+| 𝛼<sub>2,3</sub>             | 10000               | 10000               | 10000               | 10000               |
+| 𝛼<sub>3,1</sub>             | 10000               | 1000000             | 158000              | 630000              |
+| 𝛼<sub>3,2</sub>             | -10000              | -10000              | -245                | -1580000            |
+| K<sub>1,1</sub>             | 0.24                | 0.24                | 0.24                | 0.24                |
+| K<sub>2,2</sub>             | 1.6                 | 1.6                 | 1.6                 | 1.6                 |
+| K<sub>3,3</sub>             | 1                   | 1                   | 1                   | 1                   |
+| K<sub>1,2</sub>             | 1                   | 1                   | 1                   | 1                   |
+| K<sub>2,1</sub>             | 0.052               | 0.052               | 0.052               | 0.052               |
+| K<sub>2,3</sub>             | 0.32                | 0.32                | 0.32                | 0.32                |
+| K<sub>3,1</sub>             | 0.32                | 0.32                | 0.032               | 0.032               |
+| K<sub>3,2</sub>             | 0.32                | 0.32                | 4.0                 | 3.2                 |
+| c<sub>1</sub>/𝛿<sub>2</sub> | 1.3⨉10<sup>-5</sup> | 1.3⨉10<sup>-5</sup> | 1.3⨉10<sup>-5</sup> | 1.3⨉10<sup>-5</sup> |
+| c<sub>2</sub>/𝛿<sub>2</sub> | 2.5⨉10<sup>-5</sup> | 2.5⨉10<sup>-5</sup> | 2.5⨉10<sup>-5</sup> | 2.5⨉10<sup>-5</sup> |
+| c<sub>3</sub>/𝛿<sub>2</sub> | 1.9⨉10<sup>-5</sup> | 1.9⨉10<sup>-5</sup> | 1.9⨉10<sup>-5</sup> | 1.9⨉10<sup>-5</sup> |
+| 𝛿<sub>1</sub>/𝛿<sub>2</sub> | 1.7                 | 1.7                 | 1.7                 | 1.7                 |
+| 𝛿<sub>2</sub>/𝛿<sub>2</sub> | 1                   | 1                   | 1                   | 1                   |
+| 𝛿<sub>3</sub>/𝛿<sub>2</sub> | 1.35                | 1.35                | 1.35                | 1.35                |
+
+Table: three_signal {#tbl:three_signal}
+
+<div custom-style="Caption"><p>
+**Table S.[-@tbl:three_signal]. Model parameters for hypothetical three-signal architectures.** Different parameter values result in the different responses of the third QS system's synthase expression level as population density increases.
+</p></div>
+
 
 ## References
 

@@ -98,27 +98,32 @@ params.c1 = 1.3e-05;
 params.c2 = 2.5e-05;
 params.d1 = 1.7;
 params.d2 = 1;
-%% Visualize
 
-params.a30 = (params.a10 + params.a20) / 2;
-params.a33 = (params.a11 + params.a22) / 2;
-params.K33 = (params.K11 + params.K22) / 2;
-params.a13 = 0;
-params.a31 = 0;
-params.a23 = 0;
-params.a32 = 0;
-params.K31 = (params.K11 + params.K21) / 2;
-params.K32 = (params.K12 + params.K22) / 2;
-params.K13 = (params.K11 + params.K12) / 2;
-params.K23 = (params.K21 + params.K22) / 2;
+%% Visualize Alternatives
 
+% Values common to all examples
 params.c3 = (params.c1 + params.c2) / 2;
 params.d3 = (params.d1 + params.d2) / 2;
+params.a13 = 0; 
+params.K13 = 0.5;
 
+params.a30 = 10^4;
+params.a33 = 10^4;
+params.a23 = 10^4;
+params.K33 = 10^0;
+params.K23 = 10^(-0.5);
+
+% Common options for the solver
 SolveOptions = optimoptions('fsolve', 'Display', 'none');
+N = 0 : 0.025 : 1.0;
+
+% Case 1: Minimal activation
+params.a31 = 10^4;
+params.a32 = -1 * 10^4;
+params.K31 = 10^(-0.5);
+params.K32 = 10^(-0.5);
 
 S0 = [1, 1, 0];
-N = 0 : 0.025 : 1.0;
 Sstar = zeros(length(N), 3);
 for Nidx = 1: length(N)
     dS = @(S) dSdt(S, N(Nidx), params);
@@ -127,13 +132,13 @@ for Nidx = 1: length(N)
 end
 Sstar1 = Sstar;
 
-params.a31 = params.a21;
-params.a23 = params.a21 / 4;
-params.a32 = -0.1 * params.a21;
-params.K32 = (params.K12 + params.K22) / 2;
+% Case 2: Strong activation
+params.a31 = 10^6;
+params.a32 = -1 * 10^4;
+params.K31 = 10^(-0.5);
+params.K32 = 10^(-0.5);
 
 S0 = [1, 1, 0];
-N = 0 : 0.025 : 1.0;
 Sstar = zeros(length(N), 3);
 for Nidx = 1: length(N)
     dS = @(S) dSdt(S, N(Nidx), params);
@@ -142,13 +147,13 @@ for Nidx = 1: length(N)
 end
 Sstar2 = Sstar;
 
-params.a31 = params.a21;
-params.a23 = params.a21 * 5;
-params.a32 = -1 * params.a21 / 5;
-params.K32 = (params.K12 + params.K22) / 1;
+% Case 3: Limiting
+params.a31 = 10^5.2;
+params.a32 = -1 * 10^5.5;
+params.K31 = 10^(-1.5);
+params.K32 = 10^(0.6);
 
 S0 = [1, 1, 0];
-N = 0 : 0.025 : 1.0;
 Sstar = zeros(length(N), 3);
 for Nidx = 1: length(N)
     dS = @(S) dSdt(S, N(Nidx), params);
@@ -157,32 +162,57 @@ for Nidx = 1: length(N)
 end
 Sstar3 = Sstar;
 
+% Case 4: Damping
+params.a31 = 10^5.8;
+params.a32 = -1 * 10^6.2;
+params.K31 = 10^(-1.5);
+params.K32 = 10^(0.5);
+
+S0 = [1, 1, 0];
+Sstar = zeros(length(N), 3);
+for Nidx = 1: length(N)
+    dS = @(S) dSdt(S, N(Nidx), params);
+    S0 = fsolve(dS, S0, SolveOptions);
+    Sstar(Nidx, :) = S0;
+end
+Sstar4 = Sstar;
+
 Expression = figure;
-tiledlayout(1, 3);
+tiledlayout(2, 2);
 nexttile;
 PlotExpression( ...
     N=N, ...
     Sstar=Sstar1, ...
-    Xlabel="Population Density", ...
     Ylabel="Expression Level", ...
+    Title="Weak Activation", ...
     Subtitle="A" ...
 );
 nexttile;
 PlotExpression( ...
     N=N, ...
     Sstar=Sstar2, ...
-    Xlabel="Population Density", ...
-    Subtitle="B" ...
+    Title="Strong Activation", ...
+    Subtitle="B", ...
+    Legend=true ...
 );
 nexttile;
 PlotExpression( ...
     N=N, ...
     Sstar=Sstar3, ...
     Xlabel="Population Density", ...
-    Subtitle="C", ...
+    Ylabel="Expression Level", ...
+    Title="Limited Activation", ...
+    Subtitle="C" ...
+);
+nexttile;
+PlotExpression( ...
+    N=N, ...
+    Sstar=Sstar4, ...
+    Xlabel="Population Density", ...
+    Title="Damped Activation", ...
+    Subtitle="D", ...
     Legend=true ...
 );
-Expression.Position(4) = Expression.Position(4)/3;
 exportgraphics(Expression, "../Prefigures/three_signals.pdf", 'ContentType', 'vector');
 %% Local Functions
 
@@ -250,20 +280,20 @@ function PlotExpression(Options)
     yticklabels({});
     ylim([0, 2]);
     if Options.Xlabel ~= ""
-        xlabel(Options.Xlabel, FontName=FontName, FontSize=9);
+        xlabel(Options.Xlabel, FontName=FontName, FontSize=13);
     end
     if Options.Ylabel ~= ""
-        ylabel(Options.Ylabel, FontName=FontName, FontSize=9);
+        ylabel(Options.Ylabel, FontName=FontName, FontSize=13);
     end
     if Options.Title ~= ""
-        title(Options.Title, FontName=FontName, FontSize=10);
+        title(Options.Title, FontName=FontName, FontSize=13, FontWeight="normal");
     end
     if Options.Subtitle ~= ""
-        text(-0.1, 1, Options.Subtitle, FontName=FontName, FontSize=11, FontWeight="bold", Units="normalized");
+        text(-0.15, 1.05, Options.Subtitle, FontName=FontName, FontSize=18, FontWeight="bold", Units="normalized");
     end
     if Options.Legend
         legend(["QS 1", "QS 2", "QS 3"], ...
-            FontName=FontName, FontSize=7, ...
+            FontName=FontName, FontSize=10, ...
             Location='northeastoutside' ...
         );
     end
