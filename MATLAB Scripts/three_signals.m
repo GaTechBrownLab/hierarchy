@@ -289,7 +289,7 @@ function PlotExpression(Options)
         title(Options.Title, FontName=FontName, FontSize=13, FontWeight="normal");
     end
     if Options.Subtitle ~= ""
-        text(-0.15, 1.05, Options.Subtitle, FontName=FontName, FontSize=18, FontWeight="bold", Units="normalized");
+        text(-0.15, 1.05, Options.Subtitle, FontName=FontName, FontSize=18, FontWeight="normal", Units="normalized");
     end
     if Options.Legend
         legend(["QS 1", "QS 2", "QS 3"], ...

@@ -1,5 +1,5 @@
 // Standard script initialization
-version 17          // Stata version used to create/execute this script
+version 18          // Stata version used to create/execute this script
 set more off        // disable pause of output display every full screen
 clear all           // ensure clean slate
 capture log close   // close any pending logs

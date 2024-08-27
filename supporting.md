@@ -139,7 +139,7 @@ Table: multisignal {#tbl:multisignal}
 
 
 
-Figure 7 in the main text summarizes the predictions of the multi-signal models for *lasI* and *rhlI* expression. The following figures provide a more detailed comparison of the model predictions for both genes.
+Figure 3C,D in the main text summarizes the predictions of the multi-signal models for *lasI* and *rhlI* expression. The following figures provide a more detailed comparison of the model predictions for both genes.
 
 ![model_lasi](Figures/model_lasi.svg){#fig:model_lasi}
 

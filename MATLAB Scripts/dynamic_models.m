@@ -72,12 +72,12 @@ c_d2 = lsqnonlin( ...
 
 % Predict Concentrations
 
-Nmin = 0;
-Nmax = max(0.8, 1.1 * max(DensitySignalData.density));
-Nrange = Nmin : (Nmax - Nmin) / 100 : Nmax;
+ODmin = 0;
+ODmax = max(0.8, 1.1 * max(DensitySignalData.density));
+ODrange = ODmin : (ODmax - ODmin) / 100 : ODmax;
 S1 = []; S2 = []; LasB = [];
-for N = Nrange
-    Sstar = Equilibrium(N = N, m_d2 = 0, c_d2 = c_d2);
+for OD = ODrange
+    Sstar = Equilibrium(N = OD, m_d2 = 0, c_d2 = c_d2);
     S1(end + 1) = Sstar(1); %#ok<SAGROW>
     S2(end + 1) = Sstar(2); %#ok<SAGROW>
     % Also estimate LasB while we're iterating through the range
@@ -89,8 +89,8 @@ end
 PlotConstants = plot( ...
     DensityC12Data.density, DensityC12Data.uM, "o", ...
     DensityC4Data.density, DensityC4Data.uM, "o", ...
-    Nrange, S1, ":", ...
-    Nrange, S2, ":", ...
+    ODrange, S1, ":", ...
+    ODrange, S2, ":", ...
     LineWidth = 2 ...
 );
 PlotConstants(1).Color = C12Color;
@@ -105,60 +105,7 @@ ylabel("Concentration (μM)", FontName=FontName, FontSize=14);
 title("Equilibrium Signal Concentration", FontName=FontName, FontSize=16);
 legend(["3–oxo–C_{12}–HSL", "C_{4}-HSL", "", ""], FontName=FontName, FontSize=14, Location='northwest');
 exportgraphics(ax, "../Prefigures/constants.pdf", 'ContentType', 'vector');
-%% _lasB_ Expression
-
-% Data from Rattray et al. 2022 (see text)
-AggregateDataFile = "../Raw Data/Rattray.csv";
-% We don't need the entire contents of the file, so parse it to detect
-% the options available and only retrieve the information we need.
-AggregateDataOptions = detectImportOptions(AggregateDataFile);
-% Get only the columns we need.
-AggregateDataOptions.SelectedVariableNames = ["od", "mean_expression"];
-AggregateDataOptions.MissingRule = 'omitrow';
-AggregateDataOptions.ImportErrorRule = 'omitrow';
-AggregateData = readtable(AggregateDataFile, AggregateDataOptions);
-
-% Calculate model estimate of lasB expression for measured densities
-for i = 1: height(AggregateData)
-    Sstar = Equilibrium(N = AggregateData.od(i), m_d2 = 0, c_d2 = c_d2);
-    AggregateData.model(i) = LasBExp(C12 = Sstar(1), C4 = Sstar(2));
-end
-
-% Linear regression to map observed pixel intensity to estimated expression.
-X = [ones(length(AggregateData.mean_expression), 1) AggregateData.mean_expression];
-Y = AggregateData.model;
-b = X \ Y;
-Ypredict = X * b;
-
-% Calculate (and show) coefficient of determination
-R2 = 1 - sum((Y - Ypredict).^2)/sum((Y - mean(Y)).^2)
-
-Xrange = [1 1; 2.25 13.25];
-Yrange = Xrange' * b;
-
-figure;
-
-yyaxis left
-plot(Nrange, LasB, LineWidth = 3, Color = LasBColor);
-ax = gca;
-ax.FontName = FontName;
-ax.YColor = [0 0 0];
-xlabel("Population Density (~ OD600)", FontName=FontName, FontSize=14);
-xtickformat('%.1f')
-ylabel("Predicted Per-Capita Expression (RLU/OD)", FontName=FontName, FontSize=14);
-ylim(Yrange);
-
-yyaxis right
-scatter(AggregateData.od, AggregateData.mean_expression, 50, RhlIColor, LineWidth=2);
-ylabel("Observed Per-Capita Response (Pixel Intensity)", FontName=FontName, FontSize=14);
-ax = gca;
-ax.FontName = FontName;
-ax.YColor = [0 0 0];
-ylim(Xrange(2,:));
-title("\it lasB\rm\bf Expression", FontName=FontName, FontSize=16);
-legend({"Model", "Observations"}, FontName=FontName, FontSize=14, Location='northwest');
-exportgraphics(ax, "../Prefigures/lasb_response.pdf", 'ContentType', 'vector');
-%% Visualize Full Models
+%% Calculate Model Response
 
 % Now that the dynamic model is fully parameterized, explore its
 % behavior under different conditions of population density and
@@ -217,7 +164,64 @@ for idxArch = 1 : length(Architectures)
         end
     end
 end
-%%
+%% _lasB_ Expression
+
+% Check model fit vs. data
+
+% Data from Rattray et al. 2022 (see text)
+AggregateDataFile = "../Raw Data/Rattray.csv";
+% We don't need the entire contents of the file, so parse it to detect
+% the options available and only retrieve the information we need.
+AggregateDataOptions = detectImportOptions(AggregateDataFile);
+% Get only the columns we need.
+AggregateDataOptions.SelectedVariableNames = ["od", "mean_expression"];
+AggregateDataOptions.MissingRule = 'omitrow';
+AggregateDataOptions.ImportErrorRule = 'omitrow';
+AggregateData = readtable(AggregateDataFile, AggregateDataOptions);
+
+% Calculate model estimate of lasB expression for measured densities
+for i = 1: height(AggregateData)
+    Sstar = Equilibrium(N = AggregateData.od(i), m_d2 = 0, c_d2 = c_d2);
+    AggregateData.model(i) = LasBExp(C12 = Sstar(1), C4 = Sstar(2));
+end
+
+% Linear regression to map observed pixel intensity to estimated expression.
+X = [ones(length(AggregateData.mean_expression), 1) AggregateData.mean_expression];
+Y = AggregateData.model;
+b = X \ Y;
+Ypredict = X * b;
+
+% Calculate (and show) coefficient of determination
+R2 = 1 - sum((Y - Ypredict).^2)/sum((Y - mean(Y)).^2)
+
+Xrange = [1 1; 2.25 13.25];
+Yrange = Xrange' * b;
+
+LasB_Response = figure;
+LasB_Response.Position(4) = 2 * LasB_Response.Position(4);
+tiledlayout(4,3);
+nexttile([2, 3]);
+
+yyaxis left
+plot(ODrange, LasB, LineWidth = 3, Color = LasBColor);
+ax = gca;
+ax.FontName = FontName;
+ax.YColor = [0 0 0];
+xlabel("Population Density (~ OD600)", FontName=FontName, FontSize=14);
+xtickformat('%.1f')
+ylabel("Predicted Per-Capita Expression (RLU/OD)", FontName=FontName, FontSize=14);
+ylim(Yrange);
+
+yyaxis right
+scatter(AggregateData.od, AggregateData.mean_expression, 50, RhlIColor, LineWidth=2);
+ylabel("Observed Per-Capita Response (Pixel Intensity)", FontName=FontName, FontSize=14);
+ax = gca;
+ax.FontName = FontName;
+ax.YColor = [0 0 0];
+ylim(Xrange(2,:));
+title("\it lasB\rm Expression", FontName=FontName, FontWeight="normal", FontSize=16);
+legend({"Model", "Observations"}, FontName=FontName, FontSize=14, Location='northwest');
+text(-0.1, 1.05, "A", FontName=FontName, FontSize=16, FontWeight="normal", Units="normalized");
 
 % Extract values of interest as NxM matrix so they can be treated
 % as a pixel image. Note that the data must be sorted appropriately
@@ -242,7 +246,6 @@ getMatrix = @(prop, architecture, scaled) reshape( ...
 
 LasBValues = NMtable(NMtable.Architecture == "reciprocal", :).lasB;
 LasBRange=[min(LasBValues), max(LasBValues)];
-% lasB Expression
 
 % Generate native heatmap to check results below. This heatmap isn't used
 % in paper since low level functions provide better control over axes,
@@ -256,11 +259,9 @@ LasBRange=[min(LasBValues), max(LasBValues)];
 %    GridVisible="off", Colormap=flare);
 
 % Create the final heatmaps - unscaled versions first
-Heatmaps = figure;
-colormap(flare);
 
-tiledlayout(1,3);
-nexttile;
+
+AxisReciprocal = nexttile;
 MakeHeatmap( ...
     dataMatrix=getMatrix('lasB', "reciprocal", false), ...
     dataRange=LasBRange, ...
@@ -268,12 +269,12 @@ MakeHeatmap( ...
     yRange=Nrange, ...
     thresholds = [0.05, 0.5], ...
     plotTitle="Reciprocal", ...
-    plotSubtitle="A", ...
+    plotSubtitle="B", ...
     xLabel="Mass Transfer Rate", ...
     yLabel="Population Density (~ OD600)", ...
     legendLabel="" ...
 );
-nexttile;
+AxisHierarchical = nexttile;
 MakeHeatmap( ...
     dataMatrix=getMatrix('lasB', "hierarchical", false), ...
     dataRange=LasBRange, ...
@@ -281,12 +282,12 @@ MakeHeatmap( ...
     yRange=Nrange, ...
     thresholds = [0.05, 0.5], ...
     plotTitle="Hierarchical", ...
-    plotSubtitle="B", ...
+    plotSubtitle="C", ...
     xLabel={'Mass Transfer Rate', '(Normalized to C_{4}-HSL Decay Rate)'}, ...
     yLabel="", ...
     legendLabel="" ...
 );
-nexttile;
+AxisIndependent = nexttile;
 MakeHeatmap( ...
     dataMatrix=getMatrix('lasB', "independent", false), ...
     dataRange=LasBRange, ...
@@ -294,20 +295,12 @@ MakeHeatmap( ...
     yRange=Nrange, ...
     thresholds = [0.05, 0.5], ...
     plotTitle="Independent", ...
-    plotSubtitle="C", ...
+    plotSubtitle="D", ...
     xLabel="Mass Transfer Rate", ...
     yLabel="", ...
     legendLabel="\it lasB\rm\rm (RLU/OD)" ...
 );
-
-exportgraphics(Heatmaps, "../Prefigures/lasb_heatmaps.pdf", 'ContentType', 'vector');
-% Repeat for scaled versions
-
-ScaledHeatmaps = figure;
-colormap(crest);
-
-tiledlayout(1,3);
-nexttile;
+AxisReciprocalScaled = nexttile;
 MakeHeatmap( ...
     dataMatrix=getMatrix('lasB', "reciprocal", false), ...
     dataRange=LasBRange, ...
@@ -315,12 +308,12 @@ MakeHeatmap( ...
     yRange=Nrange, ...
     thresholds = [0.05, 0.5], ...
     plotTitle="Reciprocal", ...
-    plotSubtitle="D", ...
+    plotSubtitle="E", ...
     xLabel="Mass Transfer Rate", ...
     yLabel="Population Density (~ OD600)", ...
     legendLabel="" ...
 );
-nexttile;
+AxisHierarchicalScaled = nexttile;
 MakeHeatmap( ...
     dataMatrix=getMatrix('lasB', "hierarchical", true), ...
     dataRange=LasBRange, ...
@@ -328,12 +321,12 @@ MakeHeatmap( ...
     yRange=Nrange, ...
     thresholds = [0.05, 0.5], ...
     plotTitle="Rescaled Hierarchical", ...
-    plotSubtitle="E", ...
+    plotSubtitle="F", ...
     xLabel={'Mass Transfer Rate', '(Normalized to C_{4}-HSL Decay Rate)'}, ...
     yLabel="", ...
     legendLabel="" ...
 );
-nexttile;
+AxisIndepedentScaled = nexttile;
 MakeHeatmap( ...
     dataMatrix=getMatrix('lasB', "independent", true), ...
     dataRange=LasBRange, ...
@@ -341,13 +334,19 @@ MakeHeatmap( ...
     yRange=Nrange, ...
     thresholds = [0.05, 0.5], ...
     plotTitle="Rescaled Independent", ...
-    plotSubtitle="F", ...
+    plotSubtitle="G", ...
     xLabel="Mass Transfer Rate", ...
     yLabel="", ...
     legendLabel="\it lasB\rm\rm (RLU/OD)" ...
 );
 
-exportgraphics(ScaledHeatmaps, "../Prefigures/lasb_scaled_heatmaps.pdf", 'ContentType', 'vector');
+colormap(AxisReciprocal, flare);
+colormap(AxisHierarchical, flare);
+colormap(AxisIndependent, flare);
+colormap(AxisReciprocalScaled, crest);
+colormap(AxisHierarchicalScaled, crest);
+colormap(AxisIndepedentScaled, crest);
+exportgraphics(LasB_Response, "../Prefigures/lasb_response.pdf", 'ContentType', 'vector');
 % Signal Concentration
 
 C4Values = NMtable(NMtable.Architecture == "reciprocal", :).C4;
@@ -776,6 +775,7 @@ MakeCombinatorialPlot( ...
     yLabel="", ...
     legendLabel="33% Max. Conc." ...
 );
+exportgraphics(Combinatorial, "../Prefigures/combinatorial.pdf", 'ContentType', 'vector');
 % Time Response
 
 Nsam = 5; % mean(Nrange);
@@ -1154,10 +1154,10 @@ function [Heatmap, Colorbar] = MakeHeatmap(Args)
         ylabel(yLabel, FontName=FontName, FontSize=9);
     end
     if plotTitle ~= ""
-        title(plotTitle, FontName=FontName, FontSize=10);
+        title(plotTitle, FontName=FontName, FontWeight="normal", FontSize=10);
     end
     if plotSubtitle ~= ""
-        text(-0.1, 1.1, plotSubtitle, FontName=FontName, FontSize=11, FontWeight="bold", Units="normalized");
+        text(-0.1, 1.1, plotSubtitle, FontName=FontName, FontSize=11, FontWeight="normal", Units="normalized");
     end
 
     pbaspect([1 1 1]);
@@ -1232,10 +1232,10 @@ function MakeCombinatorialPlot(Args)
         ylabel(yLabel, FontName=FontName, FontSize=9);
     end
     if plotTitle ~= ""
-        title(plotTitle, FontName=FontName, FontSize=10);
+        title(plotTitle, FontName=FontName, FontWeight="normal", FontSize=10);
     end
     if plotSubtitle ~= ""
-        text(-0.1, 1.1, plotSubtitle, FontName=FontName, FontSize=11, FontWeight="bold", Units="normalized");
+        text(-0.1, 1.1, plotSubtitle, FontName=FontName, FontSize=11, FontWeight="normal", Units="normalized");
     end
 
     pbaspect([1 1 1]);
