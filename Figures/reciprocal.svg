@@ -4186,10 +4186,10 @@
             <path d="M383.09,397.315L378.53,389.778C378.404,389.57 378.471,389.3 378.681,389.174C378.89,389.049 379.162,389.116 379.288,389.324L383.849,396.861C383.975,397.069 383.907,397.34 383.698,397.465C383.488,397.591 383.216,397.523 383.09,397.315Z" style="fill:rgb(229,113,94);fill-opacity:0.5;fill-rule:nonzero;"/>
           </g>
           <g transform="matrix(2.0801,0,0,-2.06885,23.5003,196.89)">
-            <rect x="84.001" y="38.426" width="42.894" height="11.617" style="fill:none;stroke:black;stroke-width:0.21px;stroke-miterlimit:2;"/>
+            <rect x="84.001" y="41.365" width="30.287" height="8.202" style="fill: none; stroke: black; stroke-width: 0.21px; stroke-miterlimit: 2; transform-origin: 99.145px -0.663px;"/>
           </g>
           <g transform="matrix(2.0801,0,0,-2.06885,23.5003,219.075)">
-            <rect x="185.874" y="43.788" width="42.894" height="11.617" style="fill:none;stroke:black;stroke-width:0.21px;stroke-miterlimit:2;"/>
+            <rect x="185.874" y="46.734" width="32.21" height="8.723" style="fill:none;stroke:black;stroke-width:0.21px;stroke-miterlimit:2;"/>
           </g>
           <g>
             <g transform="matrix(1.00544,0,0,1,-0.476322,0)">
