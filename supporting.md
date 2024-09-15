@@ -1,10 +1,8 @@
-# The *las* and *rhl* Quorum Sensing Systems in *Pseudomonas aeruginosa* Form a Multi-Signal Reciprocal Network Which Can Tune Reactivity to Variations in Physical and Social Environments
+# Quantifying Multi-Signal Quorum Sensing Clarifies Bacterial Responses to Environmental Variation
 
 ## Supporting Information
 
 ### Literature Search
-
-The PubMed database of the US National Institutes of Health was queried on 20 July 2021 using the query [`PubMed Search ("review"[Title/Abstract] OR "review"[Publication Type]) AND "quorum sensing"[Title] AND "pseudomonas aeruginosa"[Title/Abstract]`](https://pubmed.ncbi.nlm.nih.gov/?term=%28%22review%22%5BTitle%2FAbstract%5D+OR+%22review%22%5BPublication+Type%5D%29+AND+%22quorum+sensing%22%5BTitle%5D+AND+%22pseudomonas+aeruginosa%22%5BTitle%2FAbstract%5D&sort=), resulting in 76 results with publication dates from 1996 to 2021. Papers that incluced a daigram of the gene transcription networks for the *las* and *rhl* quorum sensing systems were further analyzed to show the interactions present on those diagrams. Tables S.[-@tbl:lasr] and S.[-@tbl:rhlr] show the results. Of the papers analyzed, all show the *las* system positively activating the *rhl* system, and none show the *rhl* system postively activating the *las* system.
 
 
 | Paper | PMID | →_lasI_ | →_lasR_ | →_rhlI_ | →_rhlR_ | →elastase |
@@ -86,7 +84,10 @@ Gene expression data for *lasI,* *rhlI,* and *lasB* was collected every hour for
 </p></div>
 ### Single-Signal Models
 
-Table S.[-@tbl:singlesignal] shows the parameter estimates for the single-signal model of Equation 1 as maximum fold-change ((*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub>) and half-concentration values (_K_) for both signals.
+Table S.[-@tbl:singlesignal] shows the parameter estimates for the single-signal model below as maximum fold-change ((*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub>) and half-concentration values (_K_) for both signals.
+$$
+E(S) = \alpha_0 + \alpha \frac{[S]}{[S] + K}
+$$
 
 | Gene   | Signal                   | Parameter        |                Derivation                 |          Estimate          |      95% C.I. |
 | ------ | ------------------------ | ---------------- | :---------------------------------------: | :------------------------: | ------------: |
@@ -110,7 +111,7 @@ Table: singlesignal {#tbl:singlesignal}
 
 ### Multi-Signal Models
 
-Table S.[-@tbl:multisignal] shows the parameter estimates for the multi-signal model of Equation 2.
+Table S.[-@tbl:multisignal] shows the parameter estimates for the multi-signal model of Equation 1 (main text).
 
 | Gene   | Signal                   | Parameter                            |                          Derivation                          |          Estimate          |      95% C.I. |
 | ------ | ------------------------ | ------------------------------------ | :----------------------------------------------------------: | :------------------------: | ------------: |
