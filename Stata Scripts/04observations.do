@@ -126,15 +126,15 @@ local lasb_color = r(p3)
 frame create lasi1
 frame lasi1 {
 	use "Data/LasI.dta" 
-	plot_fold_change1 lasi c4 "`lasi_color'" "N-fold change in RLU/OD" "A"
-	plot_fold_change1 lasi c12 "`lasi_color'" "N-fold change in RLU/OD" "C"
+	plot_fold_change1 lasi c12 "`lasi_color'" "N-fold change in RLU/OD" "A"
+	plot_fold_change1 lasi c4 "`lasi_color'" "N-fold change in RLU/OD" "C"
 }
 
 frame create rhli1
 frame rhli1 {
 	use "Data/RhlI.dta"
-	plot_fold_change1 rhli c4 "`rhli_color'" "" "B"
-	plot_fold_change1 rhli c12 "`rhli_color'" "" "D"
+	plot_fold_change1 rhli c12 "`rhli_color'" "" "B"
+	plot_fold_change1 rhli c4 "`rhli_color'" "" "D"
 }
 
 frame create lasi2
@@ -149,7 +149,7 @@ frame rhli2 {
 	plot_fold_change2 rhli "F"
 }
 
-graph combine lasi_c4 rhli_c4 lasi_c12 rhli_c12 lasi rhli, ///
+graph combine lasi_c12 rhli_c12 lasi_c4 rhli_c4 lasi rhli, ///
 	cols(2) xsize(8.25in) ysize(11.25in) ///
 	name(observations, replace)
 
