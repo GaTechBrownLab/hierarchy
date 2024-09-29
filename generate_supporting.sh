@@ -30,6 +30,7 @@ cat supporting.md | sed \
     --from markdown \
     --filter pandoc-crossref \
     --citeproc \
+    --csl pnas.csl \
     --bibliography "Supporting (BibTeX).bib" \
     --reference-doc=reference.docx \
     --output "supporting.docx"
