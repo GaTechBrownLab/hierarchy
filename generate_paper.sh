@@ -30,6 +30,7 @@ cat paper.md | sed \
     --from markdown \
     --filter pandoc-crossref \
     --citeproc \
+    --csl pnas.csl \
     --bibliography "Bibliography (BibTeX).bib" \
     --reference-doc=reference.docx \
     --output "paper.docx"
