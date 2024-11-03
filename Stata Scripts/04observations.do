@@ -12,8 +12,8 @@ local font = "Arial"
 graph set window fontface "`font'"
 quietly include "Stata Scripts/00colors.do"
 
-capture program drop plot_fold_change1
-program define plot_fold_change1
+capture program drop plot_fold_change_line
+program define plot_fold_change_line
 	args gene signal color ytitle panel
 	local gene_name = substr("`gene'", 1, 3) + upper(substr("`gene'", 4, 1))
 	tempvar use_data fold_change mean_fold_change
@@ -41,14 +41,14 @@ program define plot_fold_change1
 		|| ///
 		scatter `fold_change' `signal' if `use_data', ///
 			mcolor("`color'") msize(medsmall) ///
-		xlabel(, labsize(18pt)) ///
-		xtitle("[`signal_text'] (μM)", size(18pt)) ///
-		ylabel(, nogrid labsize(18pt)) ///
-		ytitle(`ytitle', size(18pt)) ///
-		title("{it:`gene_name'} Expression", size(21pt) position(12) ring(1)) ///
-        subtitle(`panel', size(21pt) position(11) ring(1)) ///
+		xlabel(, labsize(15pt)) ///
+		xtitle("[`signal_text'] (μM)", size(15pt)) ///
+		ylabel(, nogrid labsize(15pt)) ///
+		ytitle(`ytitle', size(15pt)) ///
+		title("{it:`gene_name'} Expression", size(15pt) position(12) ring(1)) ///
+        subtitle(`panel', size(18pt) position(11) ring(1)) ///
 		note("[`null_signal']: 0 μM", ///
-			size(15pt) position(5) ring(0)) ///
+			size(12pt) position(5) ring(0)) ///
 		legend(off) ///
 		fysize(36) ///
 		nodraw name(`gene'_`signal', replace)
@@ -57,8 +57,8 @@ program define plot_fold_change1
 
 end
 
-capture program drop plot_fold_change2
-program define plot_fold_change2
+capture program drop plot_fold_change_heatmap
+program define plot_fold_change_heatmap
 	args gene panel
 
     preserve
@@ -96,23 +96,19 @@ program define plot_fold_change2
 	heatplot MFC, ///
 		levels(25) ///
 		keylabels(minmax, format(%4.0f) region(lwidth(0)) ///
-            subtitle("Mean" "fold" "change", size(15pt) justification(left))) ///
+            subtitle("Mean" "fold" "change", size(12pt) justification(left))) ///
 		colors(flare, reverse) ///
 		plotregion(style(none) margin(zero)) ///
-		title("{it:`gene_name'} Expression", size(18pt) position(12) ring(1)) ///
+		title("{it:`gene_name'} Expression", size(15pt) position(12) ring(1)) ///
         subtitle(`panel', size(18pt) position(11) ring(1)) ///
-		xtitle("[C{sub:4}–HSL] (μM)", size(18pt)) ///
-		xlabel(, format(%4.1f) labsize(14pt) noticks nogrid) ///
+		xtitle("[C{sub:4}–HSL] (μM)", size(15pt)) ///
+		xlabel(, format(%4.1f) labsize(11pt) noticks nogrid) ///
 		xscale(noline) ///
-		ytitle("[3–oxo–C{sub:12}–HSL] (μM)", size(18pt)) ///
-		ylabel(, format(%4.1f) labsize(14pt) noticks nogrid) ///
+		ytitle("[3–oxo–C{sub:12}–HSL] (μM)", size(15pt)) ///
+		ylabel(, format(%4.1f) labsize(11pt) noticks nogrid) ///
 		yscale(noline) ///
 		fysize(30) ///
-		name(`gene', replace)
-
-    gr_edit .legend.plotregion1.label[1].style.editstyle size(14-pt) editcopy
-    gr_edit .legend.plotregion1.label[27].style.editstyle size(14-pt) editcopy
-    gr_edit .xaxis1.title.yoffset = -4
+		nodraw name(`gene', replace)
 
     matrix drop MFC
     restore
@@ -126,32 +122,39 @@ local lasb_color = r(p3)
 frame create lasi1
 frame lasi1 {
 	use "Data/LasI.dta" 
-	plot_fold_change1 lasi c12 "`lasi_color'" "N-fold change in RLU/OD" "A"
-	plot_fold_change1 lasi c4 "`lasi_color'" "N-fold change in RLU/OD" "C"
+	plot_fold_change_line lasi c12 "`lasi_color'" "N-fold change in RLU/OD" "{bf:A}"
+	plot_fold_change_line lasi c4 "`lasi_color'" "" "{bf:C}"
 }
 
 frame create rhli1
 frame rhli1 {
 	use "Data/RhlI.dta"
-	plot_fold_change1 rhli c12 "`rhli_color'" "" "B"
-	plot_fold_change1 rhli c4 "`rhli_color'" "" "D"
+	plot_fold_change_line rhli c12 "`rhli_color'" "N-fold change in RLU/OD" "{bf:B}"
+	plot_fold_change_line rhli c4 "`rhli_color'" "" "{bf:D}"
 }
 
 frame create lasi2
 frame lasi2 {
 	use "Data/LasI.dta"
-	plot_fold_change2 lasi "E"
+	plot_fold_change_heatmap lasi "{bf:E}"
 }
 
 frame create rhli2
 frame rhli2 {
 	use "Data/RhlI.dta"
-	plot_fold_change2 rhli "F"
+	plot_fold_change_heatmap rhli "{bf:F}"
 }
 
-graph combine lasi_c12 rhli_c12 lasi_c4 rhli_c4 lasi rhli, ///
-	cols(2) xsize(8.25in) ysize(11.25in) ///
+graph combine lasi_c12 lasi_c4 lasi rhli_c12 rhli_c4 rhli, ///
+	cols(3) xsize(8.25in) ysize(5.5in) ///
 	name(observations, replace)
+
+gr_edit .plotregion1.graph3.legend.plotregion1.label[1].style.editstyle size(11-pt) editcopy
+gr_edit .plotregion1.graph3.legend.plotregion1.label[27].style.editstyle size(11-pt) editcopy
+gr_edit .plotregion1.graph6.legend.plotregion1.label[1].style.editstyle size(11-pt) editcopy
+gr_edit .plotregion1.graph6.legend.plotregion1.label[27].style.editstyle size(11-pt) editcopy
+gr_edit .plotregion1.graph3.xaxis1.title.yoffset = -4
+gr_edit .plotregion1.graph6.xaxis1.title.yoffset = -4
 
 graph export "Prefigures/observations.svg", as(svg) ///
  	baselineshift(on) fontface("`font'") ///
