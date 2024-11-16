@@ -28,6 +28,8 @@ cat supporting.md | sed \
     -e 's/<\/\{0,1\}sup>/^/g' \
 | pandoc \
     --from markdown \
+    --metadata "tableEqns:false" \
+    --metadata "eqnIndexTemplate:(\mathrm{S}.$$i$$)" \
     --filter pandoc-crossref \
     --citeproc \
     --csl pnas.csl \

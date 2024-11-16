@@ -295,7 +295,7 @@ frame lasi {
     }
 
     show_model1 lasi c4 "`lasi_color'" "RLU/OD" "A"
-	show_model1 lasi c12 "`lasi_color'" "RLU/OD" "D"
+	show_model1 lasi c12 "`lasi_color'" "RLU/OD" "C"
     show_model2 lasi "`lasi_color'"
 
 }
@@ -330,7 +330,7 @@ frame rhli {
     }
 
     show_model1 rhli c4 "`rhli_color'" "" "B"
-	show_model1 rhli c12 "`rhli_color'" "" "E"
+	show_model1 rhli c12 "`rhli_color'" "" "D"
     show_model2 rhli "`rhli_color'"
 }
 
@@ -363,8 +363,8 @@ frame lasb {
         frame post summary `post_vars'
     }
 
-    show_model1 lasb c4 "`lasb_color'" "" "C"
-	show_model1 lasb c12 "`lasb_color'" "" "F"
+    show_model1 lasb c4 "`lasb_color'" "" "A"
+	show_model1 lasb c12 "`lasb_color'" "" "B"
     show_model2 lasb "`lasb_color'"
 }
 
@@ -372,14 +372,22 @@ graph export "Prefigures/model_lasb.svg", as(svg) ///
 	baselineshift(on) fontface("`font'") ///
 	name(model_lasb) replace
 
-graph combine lasi_c4 rhli_c4 lasb_c4 lasi_c12 rhli_c12 lasb_c12, ///
-	ysize(3.125) ///
+graph combine lasi_c4 rhli_c4 lasi_c12 rhli_c12, ///
+	ysize(4.688) ///
 	name(model1, replace)
 
 graph export "Prefigures/model1.svg", as(svg) ///
 	baselineshift(on) fontface("`font'") ///
 	name(model1) replace
-    
+
+graph combine lasb_c4 lasb_c12, ///
+	ysize(2.344) ///
+	name(model1_lasb, replace)
+
+graph export "Prefigures/model1_lasb.svg", as(svg) ///
+	baselineshift(on) fontface("`font'") ///
+	name(model1_lasb) replace
+
 frame change summary
 label variable a0 "Basal expression (RLU/OD)"
 label variable a_c4 "Maximum expression level increase from C4 (RLU/OD)"
