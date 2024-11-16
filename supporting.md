@@ -65,19 +65,19 @@ Table: rhlr {#tbl:rhlr}
 
 Gene expression data for *lasI,* *rhlI,* and *lasB* was collected every hour for a 24-hour period. Observations used for analysis were limited to a two-hour window that contained the peak expression level for each gene. Figures S.[-@fig:lasi_time], S.[-@fig:rhli_time], and S.[-@fig:lasb_time] show the full time course of expression levels and highlight the intervals used for analysis. Those windows were 8–10 hours, 3–5 hours, and 4–6 hours for *lasI,* *rhlI,* and *lasB,* respectively.
 
-![lasi_time](Figures/lasi_time.svg){#fig:lasi_time}
+![lasi_time](Figures/figs1_lasi_time.svg){#fig:lasi_time}
 
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:lasi_time]. Expression level of _lasI_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis.
 </p></div>
 
-![rhli_time](Figures/rhli_time.svg){#fig:rhli_time}
+![rhli_time](Figures/figs2_rhli_time.svg){#fig:rhli_time}
 
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:rhli_time]. Expression level of _rhlI_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis.
 </p></div>
 
-![lasb_time](Figures/lasb_time.svg){#fig:lasb_time}
+![lasb_time](Figures/figs3_lasb_time.svg){#fig:lasb_time}
 
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:lasb_time]. Expression level of _lasB_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis.
@@ -87,7 +87,10 @@ Gene expression data for *lasI,* *rhlI,* and *lasB* was collected every hour for
 Table S.[-@tbl:singlesignal] shows the parameter estimates for the single-signal model below as maximum fold-change ((*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub>) and half-concentration values (_K_) for both signals.
 $$
 E(S) = \alpha_0 + \alpha \frac{[S]}{[S] + K}
-$$
+\qquad{(\mathrm{S}.1)}
+$$ {#eq:singlesignal}
+
+
 
 | Gene   | Signal                   | Parameter        |                Derivation                 |          Estimate          |      95% C.I. |
 | ------ | ------------------------ | ---------------- | :---------------------------------------: | :------------------------: | ------------: |
@@ -105,7 +108,15 @@ $$
 Table: singlesignal {#tbl:singlesignal}
 
 <div custom-style="Caption"><p>
-**Table S.[-@tbl:singlesignal]. Single Signal Parameter Estimates.** Estimated fold-change, derived from raw parameters of Equation 1 (main text) as (*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> , and half-concentration, *K*, values for gene expression as a function of a single signal in isolation. Values shown with 95% confidence intervals.
+**Table S.[-@tbl:singlesignal]. Single Signal Parameter Estimates.** Estimated fold-change, derived from raw parameters of Equation S.[-@eq:singlesignal] as (*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> , and half-concentration, *K*, values for gene expression as a function of a single signal in isolation. Values shown with 95% confidence intervals.
+</p></div>
+
+Figures S.[-@fig:model1] compares the observations with parameterized model predictions.
+
+![model1](Figures/figs4_model1.svg){#fig:model1}
+
+<div custom-style="Caption"><p>
+**Figure S.[-@fig:model1]. Effect of a each signal in isolation on expression levels of _lasI_ and _rhlI._** Plotted points are observations and dashed lines show model (Equation S.[-@eq:singlesignal]) predictions when parameterized per Table S.[-@tbl:singlesignal].
 </p></div>
 
 
@@ -142,13 +153,13 @@ Table: multisignal {#tbl:multisignal}
 
 Figure 3C,D in the main text summarizes the predictions of the multi-signal models for *lasI* and *rhlI* expression. The following figures provide a more detailed comparison of the model predictions for both genes.
 
-![model_lasi](Figures/model_lasi.svg){#fig:model_lasi}
+![model_lasi](Figures/figs5_model_lasi.svg){#fig:model_lasi}
 
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:model_lasi]. Multi-signal model for _lasI_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values.
 </p></div>
 
-![model_rhli](Figures/model_rhli.svg){#fig:model_rhli}
+![model_rhli](Figures/figs6_model_rhli.svg){#fig:model_rhli}
 
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:model_rhli]. Multi-signal model for _rhlI_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values.
@@ -172,17 +183,9 @@ Table: explasb {#tbl:explasb}
 <div custom-style="Caption"><p>
 **Table S.[-@tbl:explasb]. Multi-signal parameter estimates for *lasB.*** Model parameters for *lasB* expression as a function of multiple signal concentrations. Parameter definitions are the same as in Table S.[-@tbl:multisignal]. Values shown with 95% confidence intervals. Half-concentration estimates less than 0.001 μM are below the limits of precision of the experimental data.
 </p></div>
-Using the parameter values, the model predicts lasB expression as shown in Figure S.[-@fig:lasb_model].
+Using the parameter values, the model predicts lasB expression as shown in Figure S.[-@fig:model_lasb].
 
-![lasb_model](Figures/lasb_model.svg){#fig:lasb_model}
-
-<div custom-style="Caption"><p>
-**Figure S.[-@fig:lasb_model]. Multi-signal model for _lasB_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values.
-</p></div>
-
-Figure S.[-@fig:model_lasb] presents a more detailed comparison of the model predictions and observations.
-
-![model_lasb](Figures/model_lasb.svg){#fig:model_lasb}
+![model_lasb](Figures/figs7_model_lasb.svg){#fig:model_lasb}
 
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:model_lasb]. Multi-signal model for _lasB_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values.
@@ -194,18 +197,21 @@ We analyze signal dynamics using the model from the main text where the per-capi
 
 $$
 \frac{\mathrm{d}S_i}{\mathrm{dt}} \ \ = \ \ c_i E_i(\mathbf{S})\cdot N \ \ - \ \  \delta_i \cdot S_i \ \ - \ \  m \cdot S_i
+\qquad{(\mathrm{S}.2)}
 $$
 
 We consider the equilibrium signal concentration (where $\mathrm{d}S/\mathrm{dt} = 0$) and normalize to the decay rate of  C<sub>4</sub>‑HSL ($\delta_2$). When there is no mass transfer ($m = 0$), these simplifications result in an equation for  C<sub>4</sub>‑HSL,
 
 $$
 0 \ \ = \ \ \frac{ c_2 }{ \delta_2 } E_2(\mathbf{S})\cdot N \ \ - \ \ S_2
+\qquad{(\mathrm{S}.3)}
 $$
 
 which can be solved for $c_2 / \delta_2$ in terms of *rhlI* expression $E_2(\mathbf{S})$, density $N$, and C<sub>4</sub>‑HSL concentration $S_2$. The corresponding equation for 3‑oxo‑C<sub>12</sub>‑HSL includes an additional factor $\delta_1/\delta_2$ which, from [@Cornforth2014], we take to be approximately 1.7.
 
 $$
 0 \ \ = \ \ \frac{ c_1 }{ \delta_2 } E_1(\mathbf{S})\cdot N \ \ - \ \ \frac{ \delta_1 }{ \delta_2 } S_1
+\qquad{(\mathrm{S}.4)}
 $$
 
 Data from [@Rattray2022] includes measurements of equilibrium signal concentrations at multiple population densities. We combine those measurements of $N$ and $S_i$ with our model’s estimate of synthase expression level $E_i(\mathbf{S})$ and use non-linear least squares to estimate the proportionality constants.
@@ -221,7 +227,7 @@ Table: const {#tbl:const}
 **Table S.[-@tbl:const].** Estimated proportionality constants that relate synthase expression levels to per-capita signal production rates. Final column shows adjusted R<sup>2</sup> of non-linear least squares estimate.
 </p></div>
 
-![constants](Figures/constants.svg){#fig:constants}
+![constants](Figures/figs8_constants.svg){#fig:constants}
 
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:constants]. Equilibrium signal concentration predicted using proportionality constants.** Individual data points show experimental observations and dashed lines indicate model predictions.
@@ -244,11 +250,12 @@ c_1\,N\,(\alpha_{1,0} +\alpha_{1,1}) \\ - K_{1,1}\,(m+\delta_1)
 \end{aligned}
 }
 }{2\,{\left(\delta_1 +m\right)}}
+\qquad{(\mathrm{S}.5)}
 $$
 
 ### Alternate QS Architectures
 
-Table S.[-@tbl:architectures] shows the parameter values that allow Equation 2 (main text) to represent various QS architectures.
+Table S.[-@tbl:architectures] shows the parameter values that allow Equation 1 (main text) to represent various QS architectures.
 
 | Gene   | Signal                   | Parameter       |                          Derivation                          | Reciprocal Architecture | Hierarchical  Architecture | Independent Architecture |
 | ------ | ------------------------ | --------------- | :----------------------------------------------------------: | :---------------------: | :------------------------: | :----------------------: |
@@ -262,8 +269,9 @@ Table S.[-@tbl:architectures] shows the parameter values that allow Equation 2 (
 Table: architectures {#tbl:architectures}
 
 <div custom-style="Caption"><p>
-**Table S.[-@tbl:architectures]. Hierarchical and independent architectures are special cases of the reciprocal architecture.** The multi-signal model of Equation 2 (main text) can represent hypothetical, alternative QS architectures by setting appropriate *ɑ* values to zero. Zero *ɑ* values result in a corresponding maximum fold-change of 1. For a hierarchical architecture, this setting nullifies the effect of C<sub>4</sub>‑HSL on *lasI.* For an independent archictecture, this setting additionally nullifies the effect of 3‑oxo‑C<sub>12</sub>‑HSL on *rhlI.*
+**Table S.[-@tbl:architectures]. Hierarchical and independent architectures are special cases of the reciprocal architecture.** The multi-signal model of Equation 1 (main text) can represent hypothetical, alternative QS architectures by setting appropriate *ɑ* values to zero. Zero *ɑ* values result in a corresponding maximum fold-change of 1. For a hierarchical architecture, this setting nullifies the effect of C<sub>4</sub>‑HSL on *lasI.* For an independent archictecture, this setting additionally nullifies the effect of 3‑oxo‑C<sub>12</sub>‑HSL on *rhlI.*
 </p></div>
+
 
 
 ### Normalizing Alternate QS Architectures
@@ -288,19 +296,20 @@ Table: architectures {#tbl:architectures2}
 
 ### Temporal Dynamics
 
-![lasb_time_response](Figures/lasb_time_response.svg){#fig:lasb_time_response}
+![lasb_time_response](Figures/figs9_lasb_time_response.svg){#fig:lasb_time_response}
 
 <div custom-style="Caption"><p>
-**Figure S.[-@fig:lasb_time_response]. Time response of *lasB* expression for reciprocal, rescaled hierarchical, and rescaled independent architectures.** Dynamics are those of Equation 3 (main text) with parameters from Table S.[-@tbl:architectures2].
+**Figure S.[-@fig:lasb_time_response]. Time response of *lasB* expression for reciprocal, rescaled hierarchical, and rescaled independent architectures.** Dynamics are those of Equation 2 (main text) with parameters from Table S.[-@tbl:architectures2].
 </p></div>
+
 ### Signal Concentration Response
 
-![signals_heatmaps](Figures/signals_heatmaps.svg){#fig:signals_heatmaps}
+![signals_heatmaps](Figures/figs10_signals_heatmaps.svg){#fig:signals_heatmaps}
 
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:signals_heatmaps]. Signal concentration as a function of density and mass transfer varies based on the quorum sensing architecture.** The figure shows heat maps of equilibrium 3‑oxo‑C<sub>12</sub>‑HSL and C<sub>4</sub>‑HSL concentration for three quorum sensing architectures. Both population density and mass transfer rate are varied over the same ranges for all heatmaps. The lines on each heat map indicate density and mass transfer values for which equilibrium concentration is constant, either 50% of its maximum value (white) or 5% of its maximum value (black). Equilibrium concentrations calculated from equation 3 model with parameters from Table S.[-@tbl:multisignal].
 </p></div>
-![signal_ratio](Figures/signal_ratio.svg){#fig:signal_ratio}
+![signal_ratio](Figures/figs11_signal_ratio.svg){#fig:signal_ratio}
 
 <div custom-style="Caption"><p>
 **Figure S.[-@fig:signal_ratio]. Ratio of signal concentrations as a function of density and mass transfer varies based on the quorum sensing architecture.** The figure shows heat maps of the ratio of equilibrium 3‑oxo‑C<sub>12</sub>‑HSL to C<sub>4</sub>‑HSL concentration for the reciprocal architecture. Equilibrium concentrations calculated from equation 3 model with parameters from Table S.[-@tbl:multisignal].
