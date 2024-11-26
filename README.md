@@ -174,6 +174,8 @@ Custom color schemes adapted from seaboarn.
 
 Watson ML. “seaborn: statistical data visualization.” *Journal of Open Source Software* 2021 Apr 06;**6(60)**: doi: 10.21105/joss.03021.
 
+**Acknowledgements:** We thank Steve Diggle, Marvin Whitely, Joshua Weitz and members of the Center for Microbial Dynamics and Infection (CMDI) for valuable comments and discussion on this work. This research was supported by the National Science Foundation (NSF MCB 2321502; NSF DEB 2406985) and the Army Research Office (ARO W9IINF230140).
+
 ## References
 
 Allen, RC, L McNally, R Popat, and SP Brown. 2016. “Quorum Sensing Protects Bacterial Co-Operation from Exploitation by Cheats.” *ISME J* 10 (7): 1706–16.
