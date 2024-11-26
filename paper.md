@@ -204,5 +204,7 @@ Custom color schemes adapted from seaboarn.
 <div custom-style="Bibliography"><p>
 Watson ML. “seaborn: statistical data visualization.” *Journal of Open Source Software* 2021 Apr 06;**6(60)**: doi: 10.21105/joss.03021.
 </p></div>
+**Acknowledgements:** We thank Steve Diggle, Marvin Whitely, Joshua Weitz and members of the Center for Microbial Dynamics and Infection (CMDI) for valuable comments and discussion on this work.  This research was supported by the National Science Foundation (NSF MCB 2321502; NSF DEB 2406985) and the Army Research Office (ARO W9IINF230140).
+
 ## References
 
