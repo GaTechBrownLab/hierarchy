@@ -20,7 +20,8 @@ program define import_data
 		// Although data files include RLU/OD values, in a private conversation
 		// Aya indicated that the calculation may have been incorrect in early
 		// versions. To be on the safe side, we simply recalculate it here.
-		import excel "Raw Data/`filename'", sheet("All data") firstrow case(lower) clear
+		import excel "Raw Data/Initial Experiments/`filename'", ///
+			sheet("All data") firstrow case(lower) clear
 		keep c4 c12 od rlu time
 		drop if missing(c4 - time)
 		generate rlu_od = rlu / od

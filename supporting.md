@@ -110,14 +110,15 @@ Table: singlesignal {#tbl:singlesignal}
 <div custom-style="Caption"><p>
 **Table S.[-@tbl:singlesignal]. Single Signal Parameter Estimates.** Estimated fold-change, derived from raw parameters of Equation S.[-@eq:singlesignal] as (*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> , and half-concentration, *K*, values for gene expression as a function of a single signal in isolation. Values shown with 95% confidence intervals.
 </p></div>
+The primary data set focuses on a full range of signal concentrations from 0 to 5μM. To further validate the model, additional measurements were collected for low values of signal concentration. Figures S.[-@fig:lowconc] overlays those observations on the primary data set, demonstrating further strong agreement between observations and model predictions.
 
-Figures S.[-@fig:model1] compares the observations with parameterized model predictions.
-
-![model1](Figures/figs4_model1.svg){#fig:model1}
+![model1](Figures/figs4_lowconc.svg){#fig:lowconc}
 
 <div custom-style="Caption"><p>
-**Figure S.[-@fig:model1]. Effect of a each signal in isolation on expression levels of _lasI_ and _rhlI._** Plotted points are observations and dashed lines show model (Equation S.[-@eq:singlesignal]) predictions when parameterized per Table S.[-@tbl:singlesignal].
+**Figure S.[-@fig:lowconc]. Effect of a each signal in isolation on the expression level of _lasI_** Plotted points are observations and dashed lines show model (Equation S.[-@eq:singlesignal]) predictions when parameterized per Table S.[-@tbl:singlesignal]. Dark blue points are additional observations collected using low signal concentrations. (A single data point identified as an faulty outlier is indicated in light blue and excluded from the analysis.) These data points are not used in estimating model parameters, yet still show strong agreement with the model. Coefficient of determination R<sup>2</sup> between additional observations and initial model predictions is 0.82.
 </p></div>
+
+
 
 
 ### Multi-Signal Models
@@ -304,11 +305,13 @@ Table: architectures {#tbl:architectures2}
 
 ### Signal Concentration Response
 
-![signals_heatmaps](Figures/figs10_signals_heatmaps.svg){#fig:signals_heatmaps}
+
+![2signals](Figures/figs10_2signals.svg){#fig:2signals}
 
 <div custom-style="Caption"><p>
-**Figure S.[-@fig:signals_heatmaps]. Signal concentration as a function of density and mass transfer varies based on the quorum sensing architecture.** The figure shows heat maps of equilibrium 3‑oxo‑C<sub>12</sub>‑HSL and C<sub>4</sub>‑HSL concentration for three quorum sensing architectures. Both population density and mass transfer rate are varied over the same ranges for all heatmaps. The lines on each heat map indicate density and mass transfer values for which equilibrium concentration is constant, either 50% of its maximum value (white) or 5% of its maximum value (black). Equilibrium concentrations calculated from equation 3 model with parameters from Table S.[-@tbl:multisignal].
+**Figure S.[-@fig:2signals]. Extracellular signal concentration as a function of density and mass transfer varies based on the quorum sensing architecture.** Heat maps of equilibrium 3‑oxo‑C<sub>12</sub>‑HSL (A-C) and C<sub>4</sub>‑HSL (D-F) concentratio for three quorum sensing architectures . Both population density and mass transfer rate are varied over the same ranges for all heatmaps. The lines on each heat map indicate density and mass transfer values for which equilibrium concentration is constant, either 50% of its maximum value (white) or 5% of its maximum value (black). Equilibrium concentrations calculated from equation 2 model with parameters from Table S.[-@tbl:multisignal] and architectural parameters normalized according to Table S.[-@tbl:architectures2]. These results follow from the same model parameterization presented in Figure 5F-H, which showcased the predicted outcome behavior of _lasB_ expression.
 </p></div>
+
 ![signal_ratio](Figures/figs11_signal_ratio.svg){#fig:signal_ratio}
 
 <div custom-style="Caption"><p>
@@ -351,7 +354,11 @@ Table: three_signal {#tbl:three_signal}
 <div custom-style="Caption"><p>
 **Table S.[-@tbl:three_signal]. Model parameters for hypothetical three-signal architectures.** Different parameter values result in the different responses of the third QS system's synthase expression level as population density increases.
 </p></div>
+![3signals](Figures/figs12_3signals.svg){#fig:3signals}
 
+<div custom-style="Caption"><p>
+  **Figure S.[-@fig:3signals]. Interaction strength for both induction and repression determines population behavior.** The figure considers hypothetical architectures for a quorum sensing network with three QS systems. The first two, mimicking the architecture of _las_ and _rhl,_ are mutually reinforcing. The third system is both induced and repressed by the other two, matching the reported interactions of _pqs._ The panels show all three synthase expression levels as a function of population density. As the four panels show, even within the constraints of a particular architecture, a wide variety of responses are possible. (A) Baseline case with weak activation of system 3 by system 1 (low 𝛼<sub>3,1</sub>). (B) Strong activation (high 𝛼<sub>3,1</sub>). (C) Limited activation with weak repression of system 3 by system 2 (moderately negative 𝛼<sub>3,2</sub>). (D) Damped activation (strongly negative 𝛼<sub>3,2</sub>).
+</p></div>
 
 ## References
 
