@@ -70,7 +70,7 @@ Gene expression data for *lasI,* *rhlI,* and *lasB* was collected every hour for
 ![lasi_time](Figures/figs1_lasi_time.svg){#fig:lasi_time}
 
 <div custom-style="Caption"><p>
-**Figure S[-@fig:lasi_time]. Expression level of _lasI_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.14230778.)
+**Figure S[-@fig:lasi_time]. Expression level of _lasI_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
 </p></div>
 
 
@@ -78,7 +78,7 @@ Gene expression data for *lasI,* *rhlI,* and *lasB* was collected every hour for
 ![rhli_time](Figures/figs2_rhli_time.svg){#fig:rhli_time}
 
 <div custom-style="Caption"><p>
-**Figure S[-@fig:rhli_time]. Expression level of _rhlI_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.14230778.)
+**Figure S[-@fig:rhli_time]. Expression level of _rhlI_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
 </p></div>
 
 
@@ -86,7 +86,7 @@ Gene expression data for *lasI,* *rhlI,* and *lasB* was collected every hour for
 ![lasb_time](Figures/figs3_lasb_time.svg){#fig:lasb_time}
 
 <div custom-style="Caption"><p>
-**Figure S[-@fig:lasb_time]. Expression level of _lasB_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.14230778.)
+**Figure S[-@fig:lasb_time]. Expression level of _lasB_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
 </p></div>
 
 
@@ -124,7 +124,7 @@ The primary data set focuses on a full range of signal concentrations from 0 to 
 ![model1](Figures/figs4_lowconc.svg){#fig:lowconc}
 
 <div custom-style="Caption"><p>
-**Figure S[-@fig:lowconc]. Effect of a each signal in isolation on the expression level of _lasI_** Plotted points are observations and dashed lines show model (Equation S[-@eq:singlesignal]) predictions when parameterized per Table S[-@tbl:singlesignal]. Dark blue points are additional observations collected using low signal concentrations. (A single data point identified as an faulty outlier is indicated in light blue and excluded from the analysis.) These data points are not used in estimating model parameters, yet still show strong agreement with the model. Coefficient of determination R<sup>2</sup> between additional observations and initial model predictions is 0.82. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.14230778.)
+**Figure S[-@fig:lowconc]. Effect of a each signal in isolation on the expression level of _lasI_** Plotted points are observations and dashed lines show model (Equation S[-@eq:singlesignal]) predictions when parameterized per Table S[-@tbl:singlesignal]. Dark blue points are additional observations collected using low signal concentrations. (A single data point identified as an faulty outlier is indicated in light blue and excluded from the analysis.) These data points are not used in estimating model parameters, yet still show strong agreement with the model. Coefficient of determination R<sup>2</sup> between additional observations and initial model predictions is 0.82. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
 </p></div>
 
 
@@ -169,7 +169,7 @@ Figure 3C,D in the main text summarizes the predictions of the multi-signal mode
 ![model_lasi](Figures/figs5_model_lasi.svg){#fig:model_lasi}
 
 <div custom-style="Caption"><p>
-**Figure S[-@fig:model_lasi]. Multi-signal model for _lasI_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.14230778.)
+**Figure S[-@fig:model_lasi]. Multi-signal model for _lasI_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
 </p></div>
 
 
@@ -177,7 +177,7 @@ Figure 3C,D in the main text summarizes the predictions of the multi-signal mode
 ![model_rhli](Figures/figs6_model_rhli.svg){#fig:model_rhli}
 
 <div custom-style="Caption"><p>
-**Figure S[-@fig:model_rhli]. Multi-signal model for _rhlI_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.14230778.)
+**Figure S[-@fig:model_rhli]. Multi-signal model for _rhlI_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
 </p></div>
 
 
@@ -207,7 +207,7 @@ Using the parameter values, the model predicts lasB expression as shown in Figur
 ![model_lasb](Figures/figs7_model_lasb.svg){#fig:model_lasb}
 
 <div custom-style="Caption"><p>
-**Figure S[-@fig:model_lasb]. Multi-signal model for _lasB_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.14230778.)
+**Figure S[-@fig:model_lasb]. Multi-signal model for _lasB_ expression.** Panels compare model predictions to observations for all combinations of signal concentrations. Horizontal bars indicate model predictions, while plotted points show observed values. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
 </p></div>
 
 
@@ -252,7 +252,7 @@ Table: const {#tbl:const}
 ![constants](Figures/figs8_constants.svg){#fig:constants}
 
 <div custom-style="Caption"><p>
-**Figure S[-@fig:constants]. Equilibrium signal concentration predicted using proportionality constants.** Individual data points show experimental observations and dashed lines indicate model predictions. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.14230778.)
+**Figure S[-@fig:constants]. Equilibrium signal concentration predicted using proportionality constants.** Individual data points show experimental observations and dashed lines indicate model predictions. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
 </p></div>
 
 
@@ -325,7 +325,7 @@ Table: architectures {#tbl:architectures2}
 ![lasb_time_response](Figures/figs9_lasb_time_response.svg){#fig:lasb_time_response}
 
 <div custom-style="Caption"><p>
-**Figure S[-@fig:lasb_time_response]. Time response of *lasB* expression for reciprocal, rescaled hierarchical, and rescaled independent architectures.** Dynamics are those of Equation 2 (main text) with parameters from Table S[-@tbl:architectures2]. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.14230778.)
+**Figure S[-@fig:lasb_time_response]. Time response of *lasB* expression for reciprocal, rescaled hierarchical, and rescaled independent architectures.** Dynamics are those of Equation 2 (main text) with parameters from Table S[-@tbl:architectures2]. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
 </p></div>
 
 
@@ -336,7 +336,7 @@ Table: architectures {#tbl:architectures2}
 ![2signals](Figures/figs10_2signals.svg){#fig:2signals}
 
 <div custom-style="Caption"><p>
-**Figure S[-@fig:2signals]. Extracellular signal concentration as a function of density and mass transfer varies based on the quorum sensing architecture.** Heat maps of equilibrium 3‑oxo‑C<sub>12</sub>‑HSL (A-C) and C<sub>4</sub>‑HSL (D-F) concentratio for three quorum sensing architectures . Both population density and mass transfer rate are varied over the same ranges for all heatmaps. The lines on each heat map indicate density and mass transfer values for which equilibrium concentration is constant, either 50% of its maximum value (white) or 5% of its maximum value (black). Equilibrium concentrations calculated from equation 2 model with parameters from Table S[-@tbl:multisignal] and architectural parameters normalized according to Table S[-@tbl:architectures2]. These results follow from the same model parameterization presented in Figure 5F-H, which showcased the predicted outcome behavior of _lasB_ expression. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.14230778.)
+**Figure S[-@fig:2signals]. Extracellular signal concentration as a function of density and mass transfer varies based on the quorum sensing architecture.** Heat maps of equilibrium 3‑oxo‑C<sub>12</sub>‑HSL (A-C) and C<sub>4</sub>‑HSL (D-F) concentratio for three quorum sensing architectures . Both population density and mass transfer rate are varied over the same ranges for all heatmaps. The lines on each heat map indicate density and mass transfer values for which equilibrium concentration is constant, either 50% of its maximum value (white) or 5% of its maximum value (black). Equilibrium concentrations calculated from equation 2 model with parameters from Table S[-@tbl:multisignal] and architectural parameters normalized according to Table S[-@tbl:architectures2]. These results follow from the same model parameterization presented in Figure 5F-H, which showcased the predicted outcome behavior of _lasB_ expression. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
 </p></div>
 
 
@@ -344,7 +344,7 @@ Table: architectures {#tbl:architectures2}
 ![signal_ratio](Figures/figs11_signal_ratio.svg){#fig:signal_ratio}
 
 <div custom-style="Caption"><p>
-**Figure S[-@fig:signal_ratio]. Ratio of signal concentrations as a function of density and mass transfer varies based on the quorum sensing architecture.** The figure shows heat maps of the ratio of equilibrium 3‑oxo‑C<sub>12</sub>‑HSL to C<sub>4</sub>‑HSL concentration for the reciprocal architecture. Equilibrium concentrations calculated from equation 3 model with parameters from Table S[-@tbl:multisignal]. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.14230778.)
+**Figure S[-@fig:signal_ratio]. Ratio of signal concentrations as a function of density and mass transfer varies based on the quorum sensing architecture.** The figure shows heat maps of the ratio of equilibrium 3‑oxo‑C<sub>12</sub>‑HSL to C<sub>4</sub>‑HSL concentration for the reciprocal architecture. Equilibrium concentrations calculated from equation 3 model with parameters from Table S[-@tbl:multisignal]. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
 </p></div>
 
 
@@ -389,7 +389,7 @@ Table: three_signal {#tbl:three_signal}
 ![3signals](Figures/figs12_3signals.svg){#fig:3signals}
 
 <div custom-style="Caption"><p>
-  **Figure S[-@fig:3signals]. Interaction strength for both induction and repression determines population behavior.** The figure considers hypothetical architectures for a quorum sensing network with three QS systems. The first two, mimicking the architecture of _las_ and _rhl,_ are mutually reinforcing. The third system is both induced and repressed by the other two, matching the reported interactions of _pqs._ The panels show all three synthase expression levels as a function of population density. As the four panels show, even within the constraints of a particular architecture, a wide variety of responses are possible. (A) Baseline case with weak activation of system 3 by system 1 (low 𝛼<sub>3,1</sub>). (B) Strong activation (high 𝛼<sub>3,1</sub>). (C) Limited activation with weak repression of system 3 by system 2 (moderately negative 𝛼<sub>3,2</sub>). (D) Damped activation (strongly negative 𝛼<sub>3,2</sub>). (The data underlying this Figure and the code used to generate it can be found in https://doi.org/10.5281/zenodo.14230778.)
+  **Figure S[-@fig:3signals]. Interaction strength for both induction and repression determines population behavior.** The figure considers hypothetical architectures for a quorum sensing network with three QS systems. The first two, mimicking the architecture of _las_ and _rhl,_ are mutually reinforcing. The third system is both induced and repressed by the other two, matching the reported interactions of _pqs._ The panels show all three synthase expression levels as a function of population density. As the four panels show, even within the constraints of a particular architecture, a wide variety of responses are possible. (A) Baseline case with weak activation of system 3 by system 1 (low 𝛼<sub>3,1</sub>). (B) Strong activation (high 𝛼<sub>3,1</sub>). (C) Limited activation with weak repression of system 3 by system 2 (moderately negative 𝛼<sub>3,2</sub>). (D) Damped activation (strongly negative 𝛼<sub>3,2</sub>). (The data underlying this Figure and the code used to generate it can be found in https://doi.org/10.5281/zenodo.15808353.)
 </p></div>
 
 
