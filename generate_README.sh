@@ -31,7 +31,7 @@ cat paper.md | sed \
     --wrap=preserve \
     --filter pandoc-crossref \
     --citeproc \
-    --bibliography "Bibliography (BibTeX).bib" \
+    --bibliography "Paper (BibTeX).bib" \
 | sed -E "s/\<\/{0,1}figure.*\>//" \
 | sed -E "s/\<\/{0,1}p.*\>//" \
 | sed -E "s/\<\/{0,1}span.*\>//" \
