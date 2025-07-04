@@ -67,7 +67,7 @@ Table: rhlr {#tbl:rhlr}
 
 Gene expression data for *lasI,* *rhlI,* and *lasB* was collected every hour for a 24-hour period. Observations used for analysis were limited to a two-hour window that contained the peak expression level for each gene. Figures S[-@fig:lasi_time], S[-@fig:rhli_time], and S[-@fig:lasb_time] show the full time course of expression levels and highlight the intervals used for analysis. Those windows were 8–10 hours, 3–5 hours, and 4–6 hours for *lasI,* *rhlI,* and *lasB,* respectively.
 
-![lasi_time](Figures/figs1_lasi_time.svg){#fig:lasi_time}
+![lasi_time](Figures/figs1_lasi_time.svg){#fig:lasi_time number=1}
 
 <div custom-style="Caption"><p>
 **Figure S[-@fig:lasi_time]. Expression level of _lasI_ over time course of experiment.** Shaded regions highlight peak expression and indicate two-hour period used in analysis. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
