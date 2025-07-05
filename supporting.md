@@ -96,7 +96,7 @@ Table S[-@tbl:singlesignal] shows the parameter estimates for the single-signal 
 $$
 E(S) = \alpha_0 + \alpha \frac{[S]}{[S] + K}
 \qquad{(\mathrm{S}1)}
-$$ {#eq:singlesignal}
+$$
 
 
 
@@ -116,7 +116,7 @@ $$ {#eq:singlesignal}
 Table: singlesignal {#tbl:singlesignal}
 
 <div custom-style="Caption"><p>
-**Table S[-@tbl:singlesignal]. Single Signal Parameter Estimates.** Estimated fold-change, derived from raw parameters of Equation S[-@eq:singlesignal] as (*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> , and half-concentration, *K*, values for gene expression as a function of a single signal in isolation. Values shown with 95% confidence intervals.
+**Table S[-@tbl:singlesignal]. Single Signal Parameter Estimates.** Estimated fold-change, derived from raw parameters of Equation S1 as (*ɑ* + *ɑ*<sub>0</sub>) / *ɑ*<sub>0</sub> , and half-concentration, *K*, values for gene expression as a function of a single signal in isolation. Values shown with 95% confidence intervals.
 </p></div>
 
 The primary data set focuses on a full range of signal concentrations from 0 to 5μM. To further validate the model, additional measurements were collected for low values of signal concentration. Figure S[-@fig:lowconc] overlays those observations on the primary data set, demonstrating further strong agreement between observations and model predictions.
@@ -124,7 +124,7 @@ The primary data set focuses on a full range of signal concentrations from 0 to 
 ![model1](Figures/figs4_lowconc.svg){#fig:lowconc}
 
 <div custom-style="Caption"><p>
-**Figure S[-@fig:lowconc]. Effect of a each signal in isolation on the expression level of _lasI_** Plotted points are observations and dashed lines show model (Equation S[-@eq:singlesignal]) predictions when parameterized per Table S[-@tbl:singlesignal]. Dark blue points are additional observations collected using low signal concentrations. (A single data point identified as an faulty outlier is indicated in light blue and excluded from the analysis.) These data points are not used in estimating model parameters, yet still show strong agreement with the model. Coefficient of determination R<sup>2</sup> between additional observations and initial model predictions is 0.82. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
+**Figure S[-@fig:lowconc]. Effect of a each signal in isolation on the expression level of _lasI_** Plotted points are observations and dashed lines show model (Equation S1) predictions when parameterized per Table S[-@tbl:singlesignal]. Dark blue points are additional observations collected using low signal concentrations. (A single data point identified as an faulty outlier is indicated in light blue and excluded from the analysis.) These data points are not used in estimating model parameters, yet still show strong agreement with the model. Coefficient of determination R<sup>2</sup> between additional observations and initial model predictions is 0.82. (The data underlying this Figure and the code used to analyze it can be found in https://doi.org/10.5281/zenodo.15808353.)
 </p></div>
 
 
