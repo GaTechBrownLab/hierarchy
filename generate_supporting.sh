@@ -29,10 +29,12 @@ cat supporting.md | sed \
 | pandoc \
     --from markdown \
     --metadata "tableEqns:false" \
-    --metadata "eqnIndexTemplate:(\mathrm{S}.$$i$$)" \
+    --metadata "figLabels:alpha A" \
+    --metadata "eqLabels:alpha A" \
+    --metadata "tblLabels:alpha A" \
     --filter pandoc-crossref \
     --citeproc \
-    --csl pnas.csl \
+    --csl plos-biology.csl \
     --bibliography "Supporting (BibTeX).bib" \
     --reference-doc=reference.docx \
     --output "supporting.docx"
